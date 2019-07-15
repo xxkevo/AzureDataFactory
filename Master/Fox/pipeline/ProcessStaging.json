@@ -1,0 +1,288 @@
+{
+	"name": "ProcessStaging",
+	"properties": {
+		"activities": [
+			{
+				"name": "Clean Up - Fox Titles Only",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Log Job Start",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_cleanup_fox_titles_only]"
+				},
+				"linkedServiceName": {
+					"referenceName": "pagdb1_fox",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Clean Up Territory and Destination",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Clean Up - Fox Titles Only",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_cleanup_territory_and_destination]"
+				},
+				"linkedServiceName": {
+					"referenceName": "pagdb1_fox",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Parse Territory and ClientName for Country",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Clean Up Territory and Destination",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_parse_territory_and_clientName_for_country]"
+				},
+				"linkedServiceName": {
+					"referenceName": "pagdb1_fox",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Parse SpotName For Format",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Parse Territory and ClientName for Country",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_parse_spotName_for_format]"
+				},
+				"linkedServiceName": {
+					"referenceName": "pagdb1_fox",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Parse SpotName For CampaignName",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Parse SpotName For Format",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_parse_spotName_for_campaignName]"
+				},
+				"linkedServiceName": {
+					"referenceName": "pagdb1_fox",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "PopulateDIMProduction",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Parse SpotName For CampaignName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "PopulateDIMProduction",
+						"type": "DataFlowReference"
+					}
+				}
+			},
+			{
+				"name": "PopulateDIMProject",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "PopulateDIMProduction",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "PopulateDIMProject",
+						"type": "DataFlowReference"
+					}
+				}
+			},
+			{
+				"name": "PopulateFact",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "PopulateDIMProject",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "PopulateFact",
+						"type": "DataFlowReference"
+					}
+				}
+			},
+			{
+				"name": "Update Job Status",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "PopulateFact",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_update_loadresults_logs]"
+				},
+				"linkedServiceName": {
+					"referenceName": "pagdb1_fox",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Log Job Start",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_log_loadresults_logs]"
+				},
+				"linkedServiceName": {
+					"referenceName": "pagdb1_fox",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"LoadStartDate": {
+				"type": "string",
+				"defaultValue": "2019/1/23"
+			},
+			"LoadEndDate": {
+				"type": "string",
+				"defaultValue": "2019/12/23"
+			},
+			"DF_URL": {
+				"type": "string",
+				"defaultValue": "https://dms.cetacloud.tv/dmsapi/index.php/query/index/?start=2018/12/23&end=2019/6/23&source=FOX1&token=ABC&key=12345"
+			}
+		},
+		"variables": {
+			"LoadStartDate": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
