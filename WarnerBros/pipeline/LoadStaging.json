@@ -221,7 +221,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "CETA_FOX",
+						"referenceName": "CETA_WB",
 						"type": "DatasetReference",
 						"parameters": {
 							"start": "2018/12/23",
@@ -234,7 +234,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Fox_Staging",
+						"referenceName": "Staging",
 						"type": "DatasetReference"
 					}
 				]

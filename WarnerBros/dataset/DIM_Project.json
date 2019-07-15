@@ -1,8 +1,8 @@
 {
-	"name": "FOX_DIM_Project",
+	"name": "DIM_Project",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "pagdb1_fox",
+			"referenceName": "pagdb1_warner_bros",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

@@ -6,14 +6,14 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Fox_Staging",
+						"referenceName": "Staging",
 						"type": "DatasetReference"
 					},
 					"name": "StagingSource"
 				},
 				{
 					"dataset": {
-						"referenceName": "Fox_DIM_Production",
+						"referenceName": "DIM_Production",
 						"type": "DatasetReference"
 					},
 					"name": "DimProduction"
@@ -22,7 +22,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Fox_DIM_Production",
+						"referenceName": "DIM_Production",
 						"type": "DatasetReference"
 					},
 					"name": "PopulateDIMProduction"

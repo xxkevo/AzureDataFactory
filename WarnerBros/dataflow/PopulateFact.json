@@ -6,14 +6,14 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Fox_Staging",
+						"referenceName": "Staging",
 						"type": "DatasetReference"
 					},
 					"name": "StagingSource"
 				},
 				{
 					"dataset": {
-						"referenceName": "Fox_Fact_t",
+						"referenceName": "Fact_t",
 						"type": "DatasetReference"
 					},
 					"name": "Fact"
@@ -22,14 +22,14 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Fox_Fact_t",
+						"referenceName": "Fact_t",
 						"type": "DatasetReference"
 					},
 					"name": "PopulateFact"
 				},
 				{
 					"dataset": {
-						"referenceName": "Fox_Fact_t_update",
+						"referenceName": "Fact_t_update",
 						"type": "DatasetReference"
 					},
 					"name": "PopulateFactUpdate"

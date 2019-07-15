@@ -1,8 +1,8 @@
 {
-	"name": "Fox_Staging",
+	"name": "Staging",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "pagdb1_fox",
+			"referenceName": "pagdb1_warner_bros",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

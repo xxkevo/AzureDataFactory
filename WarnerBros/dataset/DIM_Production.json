@@ -1,8 +1,8 @@
 {
-	"name": "Fox_DIM_Production",
+	"name": "DIM_Production",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "pagdb1_fox",
+			"referenceName": "pagdb1_warner_bros",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

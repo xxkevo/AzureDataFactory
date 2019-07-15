@@ -1,5 +1,5 @@
 {
-	"name": "CETA_FOX_DYNAMIC",
+	"name": "CETA_WB_DYNAMIC",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "CETA",
@@ -35,7 +35,7 @@
 		"type": "RestResource",
 		"typeProperties": {
 			"relativeUrl": {
-				"value": "@string('https://dms.cetacloud.tv/dmsapi/index.php/query/index/?start=2019/5/23&end=2019/6/23&source=FOX1&token=ABC&key=12345')",
+				"value": "@string('https://dms.cetacloud.tv/dmsapi/index.php/query/index/?start=2019/5/23&end=2019/6/23&source=WARNER1&token=ABC&key=12345')",
 				"type": "Expression"
 			},
 			"requestMethod": "GET"

@@ -1,8 +1,8 @@
 {
-	"name": "Fox_Fact_t_update",
+	"name": "Fact_t_update",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "pagdb1_fox",
+			"referenceName": "pagdb1_warner_bros",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
