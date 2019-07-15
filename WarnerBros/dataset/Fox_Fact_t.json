@@ -1,0 +1,105 @@
+{
+	"name": "Fox_Fact_t",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "pagdb1_fox",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "JobID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ProductionID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ProjectID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "JobStatus",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Territory",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SpotName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Campaign",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EndDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "UnitsBilled",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "BillingTotal",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "Version",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "Asset",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Format",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Destination",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Length",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[Fact_t]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

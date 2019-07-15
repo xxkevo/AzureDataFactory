@@ -1,0 +1,32 @@
+{
+	"name": "Fox_DIM_Production",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "pagdb1_fox",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ProductionID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FeatureTitle",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[DIM_Production]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,28 @@
+{
+	"name": "FOX-API-Integration",
+	"properties": {
+		"type": "Managed",
+		"description": "FOX API Integration",
+		"typeProperties": {
+			"computeProperties": {
+				"location": "East US",
+				"nodeSize": "Standard_D1_v2",
+				"numberOfNodes": 1,
+				"maxParallelExecutionsPerNode": 1
+			},
+			"ssisProperties": {
+				"catalogInfo": {
+					"catalogServerEndpoint": "pagdb-1.database.windows.net",
+					"catalogAdminUserName": "postadsgroup",
+					"catalogAdminPassword": {
+						"type": "SecureString",
+						"value": "**********"
+					},
+					"catalogPricingTier": "S1"
+				},
+				"edition": "Standard",
+				"licenseType": "LicenseIncluded"
+			}
+		}
+	}
+}

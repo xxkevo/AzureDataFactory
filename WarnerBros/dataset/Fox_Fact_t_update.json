@@ -1,0 +1,32 @@
+{
+	"name": "Fox_Fact_t_update",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "pagdb1_fox",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "JobID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "JobStatus",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[Fact_t_Update]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

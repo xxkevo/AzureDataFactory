@@ -1,0 +1,38 @@
+{
+	"name": "CETA_FOX",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CETA",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"start": {
+				"type": "string",
+				"defaultValue": "2018/12/23"
+			},
+			"end": {
+				"type": "string",
+				"defaultValue": "2019/6/23"
+			},
+			"source": {
+				"type": "string",
+				"defaultValue": "FOX1"
+			},
+			"token": {
+				"type": "string",
+				"defaultValue": "ABC"
+			},
+			"key": {
+				"type": "string",
+				"defaultValue": "12345"
+			}
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": "https://dms.cetacloud.tv/dmsapi/index.php/query/index/?start=2019/1/1&end=2019/12/31&source=FOX1&token=ABC&key=12345",
+			"requestMethod": "GET"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

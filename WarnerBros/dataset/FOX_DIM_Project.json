@@ -1,0 +1,36 @@
+{
+	"name": "FOX_DIM_Project",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "pagdb1_fox",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ProjectID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ClientName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[DIM_Project]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
