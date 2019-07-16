@@ -274,38 +274,11 @@
 				]
 			},
 			{
-				"name": "Clean Up - Fox Titles Only",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Load Staging",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[dbo].[sp_cleanup_fox_titles_only]"
-				},
-				"linkedServiceName": {
-					"referenceName": "pagdb1_fox",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
 				"name": "Clean Up Territory and Destination",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Clean Up - Fox Titles Only",
+						"activity": "Load Staging",
 						"dependencyConditions": [
 							"Succeeded"
 						]
