@@ -1,0 +1,83 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "WarnerBros"
+		},
+		"pagdb1_fox_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'pagdb1_fox'"
+		},
+		"pagdb1_warner_bros_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'pagdb1_warner_bros'"
+		},
+		"CETA_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dms.cetacloud.tv/"
+		},
+		"FOX-API-Integration_properties_typeProperties_ssisProperties_catalogInfo_catalogServerEndpoint": {
+			"type": "string",
+			"defaultValue": "pagdb-1.database.windows.net"
+		},
+		"FOX-API-Integration_properties_typeProperties_ssisProperties_catalogInfo_catalogAdminUserName": {
+			"type": "string",
+			"defaultValue": "postadsgroup"
+		},
+		"FOX-API-Integration_properties_typeProperties_ssisProperties_catalogInfo_catalogAdminPassword": {
+			"type": "secureString"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas Token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"pagdb1_fox_connectionString": {
+						"value": "[parameters('pagdb1_fox_connectionString')]"
+					},
+					"pagdb1_warner_bros_connectionString": {
+						"value": "[parameters('pagdb1_warner_bros_connectionString')]"
+					},
+					"CETA_properties_typeProperties_url": {
+						"value": "[parameters('CETA_properties_typeProperties_url')]"
+					},
+					"FOX-API-Integration_properties_typeProperties_ssisProperties_catalogInfo_catalogServerEndpoint": {
+						"value": "[parameters('FOX-API-Integration_properties_typeProperties_ssisProperties_catalogInfo_catalogServerEndpoint')]"
+					},
+					"FOX-API-Integration_properties_typeProperties_ssisProperties_catalogInfo_catalogAdminUserName": {
+						"value": "[parameters('FOX-API-Integration_properties_typeProperties_ssisProperties_catalogInfo_catalogAdminUserName')]"
+					},
+					"FOX-API-Integration_properties_typeProperties_ssisProperties_catalogInfo_catalogAdminPassword": {
+						"value": "[parameters('FOX-API-Integration_properties_typeProperties_ssisProperties_catalogInfo_catalogAdminPassword')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
