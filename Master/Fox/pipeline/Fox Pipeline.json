@@ -258,8 +258,8 @@
 						"referenceName": "CETA_FOX",
 						"type": "DatasetReference",
 						"parameters": {
-							"start": "2018/12/23",
-							"end": "2019/6/23",
+							"start": "2019/6/23",
+							"end": "2020/12/31",
 							"source": "FOX1",
 							"token": "ABC",
 							"key": "12345"
@@ -431,6 +431,10 @@
 					"dataflow": {
 						"referenceName": "PopulateDIMProduction",
 						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
 					}
 				}
 			},
@@ -457,6 +461,10 @@
 					"dataflow": {
 						"referenceName": "PopulateDIMProject",
 						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
 					}
 				}
 			},
@@ -483,6 +491,10 @@
 					"dataflow": {
 						"referenceName": "PopulateFact",
 						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
 					}
 				}
 			},
