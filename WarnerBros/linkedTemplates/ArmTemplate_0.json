@@ -1452,7 +1452,11 @@
 									"PopulateDIMProduction": {}
 								}
 							},
-							"staging": {}
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							}
 						}
 					},
 					{
@@ -1485,7 +1489,11 @@
 									"PopulateDIMProject": {}
 								}
 							},
-							"staging": {}
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							}
 						}
 					},
 					{
@@ -1519,7 +1527,11 @@
 									"PopulateFactUpdate": {}
 								}
 							},
-							"staging": {}
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							}
 						}
 					},
 					{
@@ -1860,8 +1872,8 @@
 								"referenceName": "CETA_WB",
 								"type": "DatasetReference",
 								"parameters": {
-									"start": "2018/12/23",
-									"end": "2019/6/23",
+									"start": "2019/6/23",
+									"end": "2020/12/31",
 									"source": "FOX1",
 									"token": "ABC",
 									"key": "12345"
@@ -2014,7 +2026,11 @@
 									"PopulateDIMProduction": {}
 								}
 							},
-							"staging": {}
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							}
 						}
 					},
 					{
@@ -2047,7 +2063,11 @@
 									"PopulateDIMProject": {}
 								}
 							},
-							"staging": {}
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							}
 						}
 					},
 					{
@@ -2081,7 +2101,11 @@
 									"PopulateFactUpdate": {}
 								}
 							},
-							"staging": {}
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							}
 						}
 					},
 					{
