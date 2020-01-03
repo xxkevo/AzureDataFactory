@@ -1,0 +1,589 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "Fox"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Fox Pipeline')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Truncate Staging and Update Tables",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Log Job Start",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_deletestaging]"
+						},
+						"linkedServiceName": {
+							"referenceName": "pagdb1_fox",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Load Staging",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Truncate Staging and Update Tables",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "https://dms.cetacloud.tv/dmsapi/index.php/query/index/?start=2018/12/23&end=2019/6/23&source=FOX1&token=ABC&key=12345"
+							},
+							{
+								"name": "Destination",
+								"value": "[[dbo].[Staging_t]"
+							}
+						],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:01:40",
+								"requestInterval": "00.00:00:00.010"
+							},
+							"sink": {
+								"type": "AzureSqlSink"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "jobID"
+										},
+										"sink": {
+											"name": "JobID",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"path": "jobstatus"
+										},
+										"sink": {
+											"name": "JobStatus",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "productionname"
+										},
+										"sink": {
+											"name": "FeatureTitle",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "productionID"
+										},
+										"sink": {
+											"name": "ProductionID",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "projectnumber"
+										},
+										"sink": {
+											"name": "ProjectID",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "title"
+										},
+										"sink": {
+											"name": "Territory",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "subtitle"
+										},
+										"sink": {
+											"name": "SpotName",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "clientname"
+										},
+										"sink": {
+											"name": "ClientName",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "enddate"
+										},
+										"sink": {
+											"name": "EndDate",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "description"
+										},
+										"sink": {
+											"name": "Description",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "unitsbilled"
+										},
+										"sink": {
+											"name": "UnitsBilled",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "billingtotal"
+										},
+										"sink": {
+											"name": "BillingTotal",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "currency"
+										},
+										"sink": {
+											"name": "Currency",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "version"
+										},
+										"sink": {
+											"name": "Version",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "asset"
+										},
+										"sink": {
+											"name": "Asset",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "platform"
+										},
+										"sink": {
+											"name": "Destination",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "length"
+										},
+										"sink": {
+											"name": "Length",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "language"
+										},
+										"sink": {
+											"name": "Language",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "country"
+										},
+										"sink": {
+											"name": "Country",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "aspect"
+										},
+										"sink": {
+											"name": "Format",
+											"type": "String"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "CETA_FOX",
+								"type": "DatasetReference",
+								"parameters": {
+									"start": "2019/6/23",
+									"end": "2020/12/31",
+									"source": "FOX1",
+									"token": "ABC",
+									"key": "12345"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Fox_Staging",
+								"type": "DatasetReference"
+							}
+						]
+					},
+					{
+						"name": "Clean Up - Fox Titles Only",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Load Staging",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_cleanup_fox_titles_only]"
+						},
+						"linkedServiceName": {
+							"referenceName": "pagdb1_fox",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Clean Up Territory and Destination",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Clean Up - Fox Titles Only",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_cleanup_territory_and_destination]"
+						},
+						"linkedServiceName": {
+							"referenceName": "pagdb1_fox",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Parse Territory and ClientName for Country",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Clean Up Territory and Destination",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_parse_territory_and_clientName_for_country]"
+						},
+						"linkedServiceName": {
+							"referenceName": "pagdb1_fox",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Parse SpotName For Format",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Parse Territory and ClientName for Country",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_parse_spotName_for_format]"
+						},
+						"linkedServiceName": {
+							"referenceName": "pagdb1_fox",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Parse SpotName For CampaignName",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Parse SpotName For Format",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_parse_spotName_for_campaignName]"
+						},
+						"linkedServiceName": {
+							"referenceName": "pagdb1_fox",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "PopulateDIMProduction",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Parse SpotName For CampaignName",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "PopulateDIMProduction",
+								"type": "DataFlowReference"
+							},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							}
+						}
+					},
+					{
+						"name": "PopulateDIMProject",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "PopulateDIMProduction",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "PopulateDIMProject",
+								"type": "DataFlowReference"
+							},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							}
+						}
+					},
+					{
+						"name": "PopulateFact",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "PopulateDIMProject",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "PopulateFact",
+								"type": "DataFlowReference"
+							},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							}
+						}
+					},
+					{
+						"name": "Update Job Status",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "PopulateFact",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_update_loadresults_logs]"
+						},
+						"linkedServiceName": {
+							"referenceName": "pagdb1_fox",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Log Job Start",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[sp_log_loadresults_logs]"
+						},
+						"linkedServiceName": {
+							"referenceName": "pagdb1_fox",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"parameters": {
+					"LoadStartDate": {
+						"type": "string",
+						"defaultValue": "2019/1/23"
+					},
+					"LoadEndDate": {
+						"type": "string",
+						"defaultValue": "2019/12/23"
+					},
+					"DF_URL": {
+						"type": "string",
+						"defaultValue": "https://dms.cetacloud.tv/dmsapi/index.php/query/index/?start=2018/12/23&end=2019/6/23&source=FOX1&token=ABC&key=12345"
+					}
+				},
+				"variables": {
+					"LoadStartDate": {
+						"type": "String"
+					}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		}
+	]
+}
