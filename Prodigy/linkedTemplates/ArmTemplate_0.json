@@ -1,0 +1,953 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "Prodigy"
+		},
+		"Prodigy_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Prodigy'"
+		},
+		"Prodigy_DW_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Prodigy_DW'"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Prodigy')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "PostgreSql",
+				"typeProperties": {
+					"connectionString": "[parameters('Prodigy_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Prodigy_DW')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('Prodigy_DW_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Prodigy-IR')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"description": "Self-hosted Integration runtime created using ARM template",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Prodigy')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"description": "Self-hosted Integration runtime created using ARM template",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sink_Agencies')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "name",
+						"type": "varchar"
+					},
+					{
+						"name": "slug",
+						"type": "varchar"
+					},
+					{
+						"name": "created_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "updated_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "Agencies"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy_DW')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sink_Bid_Items')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "service_unit",
+						"type": "varchar"
+					},
+					{
+						"name": "service_qty",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "service_rate",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "service_cost",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "bid_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "service_item_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "created_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "updated_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "Bid_Items"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy_DW')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sink_Bids')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "bid_number",
+						"type": "varchar"
+					},
+					{
+						"name": "bid_type",
+						"type": "varchar"
+					},
+					{
+						"name": "bid_status",
+						"type": "varchar"
+					},
+					{
+						"name": "bid_date",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "bid_version",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "bid_total_cost",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "region",
+						"type": "varchar"
+					},
+					{
+						"name": "currency",
+						"type": "money",
+						"precision": 19,
+						"scale": 4
+					},
+					{
+						"name": "queued_bid_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "vendor_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "project_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "import_key",
+						"type": "varchar"
+					},
+					{
+						"name": "created_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "updated_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "Bids"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy_DW')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sink_Brands')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "name",
+						"type": "varchar"
+					},
+					{
+						"name": "client_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "slug",
+						"type": "varchar"
+					},
+					{
+						"name": "created_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "updated_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "Brands"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy_DW')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sink_Clients')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "name",
+						"type": "varchar"
+					},
+					{
+						"name": "slug",
+						"type": "varchar"
+					},
+					{
+						"name": "created_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "updated_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "Clients"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy_DW')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sink_Projects')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "project_name",
+						"type": "varchar"
+					},
+					{
+						"name": "project_number",
+						"type": "varchar"
+					},
+					{
+						"name": "project_type",
+						"type": "varchar"
+					},
+					{
+						"name": "details",
+						"type": "text"
+					},
+					{
+						"name": "description",
+						"type": "text"
+					},
+					{
+						"name": "delivery_date",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "budget_rate",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 0
+					},
+					{
+						"name": "currency",
+						"type": "money",
+						"precision": 19,
+						"scale": 4
+					},
+					{
+						"name": "image",
+						"type": "varchar"
+					},
+					{
+						"name": "files",
+						"type": "varchar"
+					},
+					{
+						"name": "meta_data",
+						"type": "nvarchar"
+					},
+					{
+						"name": "sustainability",
+						"type": "bit"
+					},
+					{
+						"name": "brand_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "agency_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "region",
+						"type": "varchar"
+					},
+					{
+						"name": "import_key",
+						"type": "varchar"
+					},
+					{
+						"name": "created_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "updated_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "Projects"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy_DW')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sink_Queued_Bid_Items')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "service_category",
+						"type": "varchar"
+					},
+					{
+						"name": "service",
+						"type": "varchar"
+					},
+					{
+						"name": "service_unit",
+						"type": "varchar"
+					},
+					{
+						"name": "service_qty",
+						"type": "varchar"
+					},
+					{
+						"name": "service_rate",
+						"type": "varchar"
+					},
+					{
+						"name": "service_cost",
+						"type": "varchar"
+					},
+					{
+						"name": "queued_bid_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "service_item_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "created_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "updated_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "Queued_Bid_Items"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy_DW')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sink_Queued_Bids')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "client_name",
+						"type": "varchar"
+					},
+					{
+						"name": "agency_name",
+						"type": "varchar"
+					},
+					{
+						"name": "brand_name",
+						"type": "varchar"
+					},
+					{
+						"name": "project_name",
+						"type": "varchar"
+					},
+					{
+						"name": "project_number",
+						"type": "varchar"
+					},
+					{
+						"name": "bid_number",
+						"type": "varchar"
+					},
+					{
+						"name": "supplier_name",
+						"type": "varchar"
+					},
+					{
+						"name": "bid_type",
+						"type": "varchar"
+					},
+					{
+						"name": "raw_bid_status",
+						"type": "varchar"
+					},
+					{
+						"name": "bid_date",
+						"type": "varchar"
+					},
+					{
+						"name": "bid_version",
+						"type": "varchar"
+					},
+					{
+						"name": "bid_total_cost",
+						"type": "varchar"
+					},
+					{
+						"name": "raw_region",
+						"type": "varchar"
+					},
+					{
+						"name": "name",
+						"type": "varchar"
+					},
+					{
+						"name": "document_id",
+						"type": "varchar"
+					},
+					{
+						"name": "document_parsed",
+						"type": "bit"
+					},
+					{
+						"name": "doc_parser_upload_id",
+						"type": "varchar"
+					},
+					{
+						"name": "doc_parser_template",
+						"type": "varchar"
+					},
+					{
+						"name": "approved",
+						"type": "bit"
+					},
+					{
+						"name": "currency",
+						"type": "varchar"
+					},
+					{
+						"name": "vendor_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "project_id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "region",
+						"type": "varchar"
+					},
+					{
+						"name": "bid_status",
+						"type": "varchar"
+					},
+					{
+						"name": "created_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "updated_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "Queued_Bids"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy_DW')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sink_Service_Items')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "2016",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "2017",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "rate_id",
+						"type": "varchar"
+					},
+					{
+						"name": "service_category",
+						"type": "varchar"
+					},
+					{
+						"name": "service",
+						"type": "varchar"
+					},
+					{
+						"name": "unit",
+						"type": "varchar"
+					},
+					{
+						"name": "service_group",
+						"type": "varchar"
+					},
+					{
+						"name": "slug",
+						"type": "varchar"
+					},
+					{
+						"name": "created_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "updated_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "Service_Items"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy_DW')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sink_Vendors')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "name",
+						"type": "varchar"
+					},
+					{
+						"name": "diversity",
+						"type": "bit"
+					},
+					{
+						"name": "slug",
+						"type": "varchar"
+					},
+					{
+						"name": "created_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "updated_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "Vendors"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy_DW')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Source_Agencies')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "PostgreSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "public",
+					"table": "Agencies"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Source_Bid_Items')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "PostgreSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "public",
+					"table": "Bid_Items"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Source_Bids')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "PostgreSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "public",
+					"table": "Bids"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Source_Brands')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "PostgreSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "public",
+					"table": "Brands"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Source_Clients')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "PostgreSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "public",
+					"table": "Clients"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Source_Projects')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "PostgreSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "public",
+					"table": "Projects"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy')]"
+			]
+		}
+	]
+}
