@@ -1,0 +1,64 @@
+{
+	"name": "Sink_Bid_Items",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Prodigy_DW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "service_unit",
+				"type": "varchar"
+			},
+			{
+				"name": "service_qty",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "service_rate",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "service_cost",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "bid_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "service_item_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "created_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Bid_Items"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

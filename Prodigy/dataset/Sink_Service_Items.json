@@ -1,0 +1,69 @@
+{
+	"name": "Sink_Service_Items",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Prodigy_DW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "2016",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "2017",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "rate_id",
+				"type": "varchar"
+			},
+			{
+				"name": "service_category",
+				"type": "varchar"
+			},
+			{
+				"name": "service",
+				"type": "varchar"
+			},
+			{
+				"name": "unit",
+				"type": "varchar"
+			},
+			{
+				"name": "service_group",
+				"type": "varchar"
+			},
+			{
+				"name": "slug",
+				"type": "varchar"
+			},
+			{
+				"name": "created_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Service_Items"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

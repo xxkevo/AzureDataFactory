@@ -1,0 +1,17 @@
+{
+	"name": "Source_Service_Items",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Prodigy",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "PostgreSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "public",
+			"table": "Service_Items"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,48 @@
+{
+	"name": "Sink_Brands",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Prodigy_DW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "name",
+				"type": "varchar"
+			},
+			{
+				"name": "client_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "slug",
+				"type": "varchar"
+			},
+			{
+				"name": "created_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Brands"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

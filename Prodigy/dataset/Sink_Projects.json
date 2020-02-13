@@ -1,0 +1,107 @@
+{
+	"name": "Sink_Projects",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Prodigy_DW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "project_name",
+				"type": "varchar"
+			},
+			{
+				"name": "project_number",
+				"type": "varchar"
+			},
+			{
+				"name": "project_type",
+				"type": "varchar"
+			},
+			{
+				"name": "details",
+				"type": "text"
+			},
+			{
+				"name": "description",
+				"type": "text"
+			},
+			{
+				"name": "delivery_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "budget_rate",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "currency",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "image",
+				"type": "varchar"
+			},
+			{
+				"name": "files",
+				"type": "varchar"
+			},
+			{
+				"name": "meta_data",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sustainability",
+				"type": "bit"
+			},
+			{
+				"name": "brand_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "agency_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "region",
+				"type": "varchar"
+			},
+			{
+				"name": "import_key",
+				"type": "varchar"
+			},
+			{
+				"name": "created_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Projects"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

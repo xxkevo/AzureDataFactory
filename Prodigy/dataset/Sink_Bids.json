@@ -1,0 +1,92 @@
+{
+	"name": "Sink_Bids",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Prodigy_DW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "bid_number",
+				"type": "varchar"
+			},
+			{
+				"name": "bid_type",
+				"type": "varchar"
+			},
+			{
+				"name": "bid_status",
+				"type": "varchar"
+			},
+			{
+				"name": "bid_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "bid_version",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "bid_total_cost",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "region",
+				"type": "varchar"
+			},
+			{
+				"name": "currency",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "queued_bid_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "vendor_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "project_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "import_key",
+				"type": "varchar"
+			},
+			{
+				"name": "created_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Bids"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

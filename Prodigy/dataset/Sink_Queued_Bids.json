@@ -1,0 +1,133 @@
+{
+	"name": "Sink_Queued_Bids",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Prodigy_DW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "client_name",
+				"type": "varchar"
+			},
+			{
+				"name": "agency_name",
+				"type": "varchar"
+			},
+			{
+				"name": "brand_name",
+				"type": "varchar"
+			},
+			{
+				"name": "project_name",
+				"type": "varchar"
+			},
+			{
+				"name": "project_number",
+				"type": "varchar"
+			},
+			{
+				"name": "bid_number",
+				"type": "varchar"
+			},
+			{
+				"name": "supplier_name",
+				"type": "varchar"
+			},
+			{
+				"name": "bid_type",
+				"type": "varchar"
+			},
+			{
+				"name": "raw_bid_status",
+				"type": "varchar"
+			},
+			{
+				"name": "bid_date",
+				"type": "varchar"
+			},
+			{
+				"name": "bid_version",
+				"type": "varchar"
+			},
+			{
+				"name": "bid_total_cost",
+				"type": "varchar"
+			},
+			{
+				"name": "raw_region",
+				"type": "varchar"
+			},
+			{
+				"name": "name",
+				"type": "varchar"
+			},
+			{
+				"name": "document_id",
+				"type": "varchar"
+			},
+			{
+				"name": "document_parsed",
+				"type": "bit"
+			},
+			{
+				"name": "doc_parser_upload_id",
+				"type": "varchar"
+			},
+			{
+				"name": "doc_parser_template",
+				"type": "varchar"
+			},
+			{
+				"name": "approved",
+				"type": "bit"
+			},
+			{
+				"name": "currency",
+				"type": "varchar"
+			},
+			{
+				"name": "vendor_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "project_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "region",
+				"type": "varchar"
+			},
+			{
+				"name": "bid_status",
+				"type": "varchar"
+			},
+			{
+				"name": "created_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Queued_Bids"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

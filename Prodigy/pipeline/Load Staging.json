@@ -1,0 +1,297 @@
+{
+	"name": "Load Staging",
+	"properties": {
+		"activities": [
+			{
+				"name": "Load Agencies",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Lookup_Agencies_MaxDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "PostgreSqlSource",
+						"query": {
+							"value": "SELECT \nid, \"name\", \nslug, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nfrom public.\"Agencies\"  \n",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "slug",
+									"type": "String"
+								},
+								"sink": {
+									"name": "slug",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "updated_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "updated_at",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Source_Agencies",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Sink_Agencies",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Lookup_Agencies_MaxDate",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT CONCAT('''',CONVERT(varchar(50), max_created_at),'''') as max_created_at,\n CONCAT('''',CONVERT(varchar(50), max_updated_at),'''') as max_updated_at\n FROM(\nSELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  MAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at FROM stg.\"Agencies\") a",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "Sink_Agencies",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Lookup_Bid_Items_MaxDate",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT CONCAT('''',CONVERT(varchar(50), max_created_at),'''') as max_created_at,\n CONCAT('''',CONVERT(varchar(50), max_updated_at),'''') as max_updated_at\n FROM(\nSELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  MAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at FROM stg.\"Bid_Items\") a",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "Sink_Bid_Items",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Load BidItems",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Lookup_Bid_Items_MaxDate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "PostgreSqlSource",
+						"query": {
+							"value": "SELECT id, \nservice_unit, \nservice_qty, \nservice_rate, \nservice_cost, \nbid_id, \nservice_item_id, \noriginal_service_qty, \noriginal_service_rate, \noriginal_service_cost, \noriginal_service_category, \noriginal_service, \noriginal_service_unit,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nfrom public.\"Bid_Items\" ",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "service_unit",
+									"type": "String"
+								},
+								"sink": {
+									"name": "service_unit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "service_qty",
+									"type": "Single"
+								},
+								"sink": {
+									"name": "service_qty",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "service_rate",
+									"type": "Single"
+								},
+								"sink": {
+									"name": "service_rate",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "service_cost",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "service_cost",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "bid_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "bid_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "service_item_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "service_item_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "created_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "updated_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "updated_at",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Source_Bid_Items",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Sink_Bid_Items",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
