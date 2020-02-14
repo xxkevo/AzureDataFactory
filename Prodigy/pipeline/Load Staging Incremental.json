@@ -2292,7 +2292,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[Merge_Staging_To_Final]"
+					"storedProcedureName": "[dbo].[sp_merge_staging_to_final]"
 				},
 				"linkedServiceName": {
 					"referenceName": "Prodigy_DW",
@@ -2319,7 +2319,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[Calc_CostSavings]"
+					"storedProcedureName": "[dbo].[sp_calc_cost_savings]"
 				},
 				"linkedServiceName": {
 					"referenceName": "Prodigy_DW",
@@ -2328,6 +2328,33 @@
 			},
 			{
 				"name": "Truncate Staging Tables",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Log Load Reults",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_truncate_staging]"
+				},
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Log Load Reults",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
@@ -2339,7 +2366,34 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[Truncate_Staging]"
+					"storedProcedureName": "[dbo].[sp_log_loadresults_logs]"
+				},
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Update Load Results",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Calc_CostSavings",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_update_loadresults_logs]"
 				},
 				"linkedServiceName": {
 					"referenceName": "Prodigy_DW",
