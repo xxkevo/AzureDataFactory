@@ -30,7 +30,7 @@
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
-			"relativeUrl": "https://dms.cetacloud.tv/dmsapi/index.php/query/index/?start=2019/1/1&end=2019/12/31&source=FOX1&token=ABC&key=12345",
+			"relativeUrl": "https://dms.cetacloud.tv/dmsapi/index.php/query/index/?start=2019/12/1&end=2020/12/31&source=FOX1&token=ABC&key=12345",
 			"requestMethod": "GET"
 		}
 	},
