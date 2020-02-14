@@ -25,7 +25,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT \nid, \"name\", \nslug, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nfrom public.\"Agencies\"  \nWHERE created_at - interval '8 hour 5 second'>  (@{activity('Lookup_Agencies_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 5 second'> (@{activity('Lookup_Agencies_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT \nid, \"name\", \nslug, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nfrom public.\"Agencies\"  \nWHERE created_at - interval '8 hour'>  (@{activity('Lookup_Agencies_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour'> (@{activity('Lookup_Agencies_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -173,7 +173,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT id, \nservice_unit, \nservice_qty, \nservice_rate, \nservice_cost, \nbid_id, \nservice_item_id, \noriginal_service_qty, \noriginal_service_rate, \noriginal_service_cost, \noriginal_service_category, \noriginal_service, \noriginal_service_unit,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nfrom public.\"Bid_Items\" \nWHERE created_at - interval '8 hour 5 second'>  (@{activity('Lookup_Bid_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 5 second'> (@{activity('Lookup_Bid_Items_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT id, \nservice_unit, \nservice_qty, \nservice_rate, \nservice_cost, \nbid_id, \nservice_item_id, \noriginal_service_qty, \noriginal_service_rate, \noriginal_service_cost, \noriginal_service_category, \noriginal_service, \noriginal_service_unit,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nfrom public.\"Bid_Items\" \nWHERE created_at - interval '8 hour'>  (@{activity('Lookup_Bid_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour'> (@{activity('Lookup_Bid_Items_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -404,7 +404,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\n  id,\n  bid_number,\n  bid_type,\n  bid_status,\n  bid_date,\n  bid_version,\n  bid_total_cost,\n  region,\n  currency,\n  queued_bid_id,\n  vendor_id,\n  project_id,\n  import_key,\n  original_client_name,\n  original_agency_name,\n  original_brand_name,\n  original_project_name,\n  original_project_number,\n  original_bid_number,\n  original_supplier_name,\n  original_bid_type,\n  original_bid_status,\n  original_raw_bid_status,\n  original_bid_date,\n  original_bid_version,\n  original_bid_total_cost,\n  original_region,\n  original_raw_region,\n  original_name,\n  original_document_id,\n  original_document_parsed,\n  original_doc_parser_upload_id,\n  original_doc_parser_template,\n  original_currency,\n  pdf,\n  created_at - interval '8 hour'  as created_at, \n  updated_at - interval '8 hour'  as updated_at \nFROM public.\"Bids\"\nWHERE created_at - interval '8 hour 5 second'>  (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 5 second'> (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT\n  id,\n  bid_number,\n  bid_type,\n  bid_status,\n  bid_date,\n  bid_version,\n  bid_total_cost,\n  region,\n  currency,\n  queued_bid_id,\n  vendor_id,\n  project_id,\n  import_key,\n  original_client_name,\n  original_agency_name,\n  original_brand_name,\n  original_project_name,\n  original_project_number,\n  original_bid_number,\n  original_supplier_name,\n  original_bid_type,\n  original_bid_status,\n  original_raw_bid_status,\n  original_bid_date,\n  original_bid_version,\n  original_bid_total_cost,\n  original_region,\n  original_raw_region,\n  original_name,\n  original_document_id,\n  original_document_parsed,\n  original_doc_parser_upload_id,\n  original_doc_parser_template,\n  original_currency,\n  pdf,\n  created_at - interval '8 hour'  as created_at, \n  updated_at - interval '8 hour'  as updated_at \nFROM public.\"Bids\"\nWHERE created_at - interval '8 hour'>  (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour'> (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -855,7 +855,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\n  id,\n  \"name\",\n  client_id,\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Brands\"\nWHERE created_at - interval '8 hour 5 second'>  (@{activity('Lookup_Brands_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 5 second'> (@{activity('Lookup_Brands_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT\n  id,\n  \"name\",\n  client_id,\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Brands\"\nWHERE created_at - interval '8 hour'>  (@{activity('Lookup_Brands_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour'> (@{activity('Lookup_Brands_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -996,7 +996,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\n  id,\n  \"name\",\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Clients\"\nWHERE created_at - interval '8 hour 5 second'>  (@{activity('Lookup_Clients_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 5 second'> (@{activity('Lookup_Clients_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT\n  id,\n  \"name\",\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Clients\"\nWHERE created_at - interval '8 hour'>  (@{activity('Lookup_Clients_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour'> (@{activity('Lookup_Clients_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -1127,7 +1127,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\nid, \nproject_name, \nproject_number, \nproject_type, \ndetails, \ndescription, \ndelivery_date, \nbudget_rate, \ncurrency, \nimage, \nfiles, \nmeta_data, \nsustainability, \nbrand_id, \nagency_id, \nregion, \nimport_key, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Projects\"\nWHERE created_at - interval '8 hour 5 second'>  (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 5 second'> (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT\nid, \nproject_name, \nproject_number, \nproject_type, \ndetails, \ndescription, \ndelivery_date, \nbudget_rate, \ncurrency, \nimage, \nfiles, \nmeta_data, \nsustainability, \nbrand_id, \nagency_id, \nregion, \nimport_key, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Projects\"\nWHERE created_at - interval '8 hour'>  (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour'> (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -1398,7 +1398,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\n  id,\n  service_category,\n  service,\n  service_unit,\n  service_qty,\n  service_rate,\n  service_cost,\n  queued_bid_id,\n  service_item_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Queued_Bid_Items\"\nWHERE created_at - interval '8 hour 5 second'>  (@{activity('Lookup_Queued_Bid_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 5 second'> (@{activity('Lookup_Queued_Bid_Items_MaxDate').output.firstRow.max_updated_at})\n",
+							"value": "SELECT\n  id,\n  service_category,\n  service,\n  service_unit,\n  service_qty,\n  service_rate,\n  service_cost,\n  queued_bid_id,\n  service_item_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Queued_Bid_Items\"\nWHERE created_at - interval '8 hour'>  (@{activity('Lookup_Queued_Bid_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour'> (@{activity('Lookup_Queued_Bid_Items_MaxDate').output.firstRow.max_updated_at})\n",
 							"type": "Expression"
 						}
 					},
@@ -1589,7 +1589,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\n  id,\n  client_name,\n  agency_name,\n  brand_name,\n  project_name,\n  project_number,\n  bid_number,\n  supplier_name,\n  bid_type,\n  raw_bid_status,\n  bid_date,\n  bid_version,\n  bid_total_cost,\n  raw_region,\n  \"name\",\n  document_id,\n  document_parsed,\n  doc_parser_upload_id,\n  doc_parser_template,\n  approved,\n  currency,\n  vendor_id,\n  project_id,\n  region,\n  bid_status,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Queued_Bids\"\nWHERE created_at - interval '8 hour 5 second'>  (@{activity('Lookup_Queued_Bids_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 5 second'> (@{activity('Lookup_Queued_Bids_MaxDate').output.firstRow.max_updated_at})\n\n",
+							"value": "SELECT\n  id,\n  client_name,\n  agency_name,\n  brand_name,\n  project_name,\n  project_number,\n  bid_number,\n  supplier_name,\n  bid_type,\n  raw_bid_status,\n  bid_date,\n  bid_version,\n  bid_total_cost,\n  raw_region,\n  \"name\",\n  document_id,\n  document_parsed,\n  doc_parser_upload_id,\n  doc_parser_template,\n  approved,\n  currency,\n  vendor_id,\n  project_id,\n  region,\n  bid_status,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Queued_Bids\"\nWHERE created_at - interval '8 hour'>  (@{activity('Lookup_Queued_Bids_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour'> (@{activity('Lookup_Queued_Bids_MaxDate').output.firstRow.max_updated_at})\n\n",
 							"type": "Expression"
 						}
 					},
@@ -1940,7 +1940,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\n  \"2016\",\n  \"2017\",\n  id,\n  rate_id,\n  service_category,\n  service,\n  unit,\n  service_group,\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Service_Items\"\nWHERE created_at - interval '8 hour 5 second'>  (@{activity('Lookup_Service_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 5 second'> (@{activity('Lookup_Service_Items_MaxDate').output.firstRow.max_updated_at})\n",
+							"value": "SELECT\n  \"2016\",\n  \"2017\",\n  id,\n  rate_id,\n  service_category,\n  service,\n  unit,\n  service_group,\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Service_Items\"\nWHERE created_at - interval '8 hour'>  (@{activity('Lookup_Service_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour'> (@{activity('Lookup_Service_Items_MaxDate').output.firstRow.max_updated_at})\n",
 							"type": "Expression"
 						}
 					},
@@ -2131,7 +2131,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT \nid, \n\"name\", \ndiversity,\nslug, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nfrom public.\"Vendors\"  \nWHERE created_at - interval '8 hour 5 second'> (@{activity('Lookup_Vendors_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 5 second'> (@{activity('Lookup_Vendors_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT \nid, \n\"name\", \ndiversity,\nslug, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nfrom public.\"Vendors\"  \nWHERE created_at - interval '8 hour'> (@{activity('Lookup_Vendors_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour'> (@{activity('Lookup_Vendors_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
