@@ -102,11 +102,11 @@
 				"parameters": {
 					"start": {
 						"type": "string",
-						"defaultValue": "2018/12/23"
+						"defaultValue": "2019/12/1"
 					},
 					"end": {
 						"type": "string",
-						"defaultValue": "2019/6/23"
+						"defaultValue": "2020/12/31"
 					},
 					"source": {
 						"type": "string",
@@ -1525,7 +1525,7 @@
 								"referenceName": "CETA_FOX",
 								"type": "DatasetReference",
 								"parameters": {
-									"start": "2019/6/23",
+									"start": "2019/12/1",
 									"end": "2020/12/31",
 									"source": "FOX1",
 									"token": "ABC",
