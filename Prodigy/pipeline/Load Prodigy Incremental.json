@@ -1,5 +1,5 @@
 {
-	"name": "Load Staging Incremental",
+	"name": "Load Prodigy Incremental",
 	"properties": {
 		"activities": [
 			{
