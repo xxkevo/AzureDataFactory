@@ -89,7 +89,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Load Staging Incremental')]",
+			"name": "[concat(parameters('factoryName'), '/Load Prodigy Incremental')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -470,7 +470,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM stg.\"Bids\") a\n\n\n\n",
+								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Bids\") a\n\n\n\n",
 								"queryTimeout": "02:00:00"
 							},
 							"dataset": {
@@ -503,7 +503,7 @@
 							"source": {
 								"type": "PostgreSqlSource",
 								"query": {
-									"value": "SELECT\n  id,\n  bid_number,\n  bid_type,\n  bid_status,\n  bid_date,\n  bid_version,\n  bid_total_cost,\n  region,\n  currency,\n  queued_bid_id,\n  vendor_id,\n  project_id,\n  import_key,\n  original_client_name,\n  original_agency_name,\n  original_brand_name,\n  original_project_name,\n  original_project_number,\n  original_bid_number,\n  original_supplier_name,\n  original_bid_type,\n  original_bid_status,\n  original_raw_bid_status,\n  original_bid_date,\n  original_bid_version,\n  original_bid_total_cost,\n  original_region,\n  original_raw_region,\n  original_name,\n  original_document_id,\n  original_document_parsed,\n  original_doc_parser_upload_id,\n  original_doc_parser_template,\n  original_currency,\n  pdf,\n  created_at - interval '8 hour'  as created_at, \n  updated_at - interval '8 hour'  as updated_at \nFROM public.\"Bids\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_updated_at})",
+									"value": "SELECT\n  id,\n  bid_number,\n  bid_type,\n  bid_status,\n  bid_date,\n  bid_version,\n  bid_total_cost,\n  region,\n  currency,\n  queued_bid_id,\n  vendor_id,\n  project_id,\n  import_key,\n  original_client_name,\n  original_agency_name,\n  original_brand_name,\n  original_project_name,\n  original_project_number,\n  original_bid_number,\n  original_supplier_name,\n  original_bid_type,\n  original_bid_status,\n  original_raw_bid_status,\n  original_bid_date,\n  original_bid_version,\n  original_bid_total_cost,\n  original_region,\n  original_raw_region,\n  original_name,\n  original_document_id,\n  original_document_parsed,\n  original_doc_parser_upload_id,\n  original_doc_parser_template,\n  original_currency,\n  pdf,\n  created_at - interval '8 hour'  as created_at, \n  updated_at - interval '8 hour'  as updated_at \nFROM public.\"Bids\"\nWHERE created_at - interval '8 hour 3 second'>  (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 3 second'> (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_updated_at})",
 									"type": "Expression"
 								}
 							},
@@ -924,7 +924,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM stg.\"brands\") a\n\n\n\n",
+								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"brands\") a\n\n\n\n",
 								"queryTimeout": "02:00:00"
 							},
 							"dataset": {
