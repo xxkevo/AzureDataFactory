@@ -2189,7 +2189,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\n  \"2016\",\n  \"2017\",\n  id,\n  rate_id,\n  service_category,\n  service,\n  unit,\n  service_group,\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Service_Items\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Service_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Service_Items_MaxDate').output.firstRow.max_updated_at})\n",
+							"value": "SELECT\n  \"2016\",\n  \"2017\",\n  id,\n  rate_id,\n  service_category,\n  service,\n  unit,\n  service_group,\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Service_Items\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Service_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Service_Items_MaxDate').output.firstRow.max_updated_at})\n",
 							"type": "Expression"
 						}
 					},
@@ -2307,6 +2307,16 @@
 								},
 								"sink": {
 									"name": "updated_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "deleted_at",
 									"type": "DateTime"
 								}
 							}
@@ -2380,7 +2390,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT \nid, \n\"name\", \ndiversity,\nslug, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nfrom public.\"Vendors\"  \nWHERE created_at - interval '8 hour 2 second'> (@{activity('Lookup_Vendors_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Vendors_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT \nid, \n\"name\", \ndiversity,\nslug, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Vendors\"  \nWHERE created_at - interval '8 hour 2 second'> (@{activity('Lookup_Vendors_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Vendors_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -2448,6 +2458,16 @@
 								},
 								"sink": {
 									"name": "updated_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "deleted_at",
 									"type": "DateTime"
 								}
 							}
