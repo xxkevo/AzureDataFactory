@@ -47,9 +47,7 @@
 			},
 			{
 				"name": "currency",
-				"type": "money",
-				"precision": 19,
-				"scale": 4
+				"type": "varchar"
 			},
 			{
 				"name": "queued_bid_id",
@@ -81,6 +79,133 @@
 				"type": "datetime",
 				"precision": 23,
 				"scale": 3
+			},
+			{
+				"name": "original_client_name",
+				"type": "varchar"
+			},
+			{
+				"name": "original_agency_name",
+				"type": "varchar"
+			},
+			{
+				"name": "original_brand_name",
+				"type": "varchar"
+			},
+			{
+				"name": "original_project_name",
+				"type": "varchar"
+			},
+			{
+				"name": "original_project_number",
+				"type": "varchar"
+			},
+			{
+				"name": "original_bid_number",
+				"type": "varchar"
+			},
+			{
+				"name": "original_supplier_name",
+				"type": "varchar"
+			},
+			{
+				"name": "original_bid_type",
+				"type": "varchar"
+			},
+			{
+				"name": "original_bid_status",
+				"type": "varchar"
+			},
+			{
+				"name": "original_raw_bid_status",
+				"type": "varchar"
+			},
+			{
+				"name": "original_bid_date",
+				"type": "varchar"
+			},
+			{
+				"name": "original_bid_version",
+				"type": "varchar"
+			},
+			{
+				"name": "original_bid_total_cost",
+				"type": "varchar"
+			},
+			{
+				"name": "original_region",
+				"type": "varchar"
+			},
+			{
+				"name": "original_raw_region",
+				"type": "varchar"
+			},
+			{
+				"name": "original_name",
+				"type": "varchar"
+			},
+			{
+				"name": "original_document_id",
+				"type": "varchar"
+			},
+			{
+				"name": "original_document_parsed",
+				"type": "bit"
+			},
+			{
+				"name": "original_doc_parser_upload_id",
+				"type": "varchar"
+			},
+			{
+				"name": "original_doc_parser_template",
+				"type": "varchar"
+			},
+			{
+				"name": "original_currency",
+				"type": "varchar"
+			},
+			{
+				"name": "pdf",
+				"type": "varchar"
+			},
+			{
+				"name": "bid_country_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "client_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "brand_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "deleted_at",
+				"type": "timestamp"
+			},
+			{
+				"name": "currency_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "original_currency_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "bid_status_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "original_bid_status_id",
+				"type": "int",
+				"precision": 10
 			}
 		],
 		"typeProperties": {
