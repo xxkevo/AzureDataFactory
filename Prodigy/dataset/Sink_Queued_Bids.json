@@ -122,6 +122,25 @@
 				"type": "datetime",
 				"precision": 23,
 				"scale": 3
+			},
+			{
+				"name": "bid_country_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "deleted_at",
+				"type": "timestamp"
+			},
+			{
+				"name": "currency_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "bid_status_id",
+				"type": "int",
+				"precision": 10
 			}
 		],
 		"typeProperties": {
