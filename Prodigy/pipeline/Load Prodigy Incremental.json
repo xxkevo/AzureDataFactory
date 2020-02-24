@@ -173,7 +173,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT id, \nservice_unit, \nservice_qty, \nservice_rate, \nservice_cost, \nbid_id, \nservice_item_id, \noriginal_service_qty, \noriginal_service_rate, \noriginal_service_cost, \noriginal_service_category, \noriginal_service, \noriginal_service_unit,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nfrom public.\"Bid_Items\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Bid_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Bid_Items_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT id, \nservice_unit, \nservice_qty, \nservice_rate, \nservice_cost, \nbid_id, \nservice_item_id, \noriginal_service_qty, \noriginal_service_rate, \noriginal_service_cost, \noriginal_service_category, \noriginal_service, \noriginal_service_unit,\nclient_id,\nbrand_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Bid_Items\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Bid_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Bid_Items_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -332,6 +332,36 @@
 								"sink": {
 									"name": "original_service_unit",
 									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "client_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "client_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "brand_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "brand_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "deleted_at",
+									"type": "DateTime"
 								}
 							}
 						]
@@ -404,7 +434,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\n  id,\n  bid_number,\n  bid_type,\n  bid_status,\n  bid_date,\n  bid_version,\n  bid_total_cost,\n  region,\n  currency,\n  queued_bid_id,\n  vendor_id,\n  project_id,\n  import_key,\n  original_client_name,\n  original_agency_name,\n  original_brand_name,\n  original_project_name,\n  original_project_number,\n  original_bid_number,\n  original_supplier_name,\n  original_bid_type,\n  original_bid_status,\n  original_raw_bid_status,\n  original_bid_date,\n  original_bid_version,\n  original_bid_total_cost,\n  original_region,\n  original_raw_region,\n  original_name,\n  original_document_id,\n  original_document_parsed,\n  original_doc_parser_upload_id,\n  original_doc_parser_template,\n  original_currency,\n  pdf,\n  created_at - interval '8 hour'  as created_at, \n  updated_at - interval '8 hour'  as updated_at \nFROM public.\"Bids\"\nWHERE created_at - interval '8 hour 3 second'>  (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 3 second'> (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT\n  id,\n  bid_number,\n  bid_type,\n  bid_status,\n  bid_date,\n  bid_version,\n  bid_total_cost,\n  region,\n  currency,\n  queued_bid_id,\n  vendor_id,\n  project_id,\n  import_key,\n  original_client_name,\n  original_agency_name,\n  original_brand_name,\n  original_project_name,\n  original_project_number,\n  original_bid_number,\n  original_supplier_name,\n  original_bid_type,\n  original_bid_status,\n  original_raw_bid_status,\n  original_bid_date,\n  original_bid_version,\n  original_bid_total_cost,\n  original_region,\n  original_raw_region,\n  original_name,\n  original_document_id,\n  original_document_parsed,\n  original_doc_parser_upload_id,\n  original_doc_parser_template,\n  original_currency,\n  pdf,\n  bid_country_id,\n  client_id,\n  brand_id,\n  currency_id,\n  original_currency_id,\n  bid_status_id,\n  original_bid_status_id,\n  created_at - interval '8 hour'  as created_at, \n  updated_at - interval '8 hour'  as updated_at,\n  deleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Bids\"\nWHERE created_at - interval '8 hour 3 second'>  (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 3 second'> (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -783,6 +813,86 @@
 								"sink": {
 									"name": "pdf",
 									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "bid_country_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "bid_country_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "client_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "client_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "brand_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "brand_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "deleted_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "currency_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "currency_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "original_currency_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "original_currency_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "bid_status_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "bid_status_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "original_bid_status_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "original_bid_status_id",
+									"type": "Int32"
 								}
 							}
 						]
@@ -855,7 +965,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\n  id,\n  \"name\",\n  client_id,\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Brands\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Brands_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Brands_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT\n  id,\n  \"name\",\n  client_id,\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Brands\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Brands_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Brands_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -923,6 +1033,16 @@
 								},
 								"sink": {
 									"name": "updated_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "deleted_at",
 									"type": "DateTime"
 								}
 							}
@@ -996,7 +1116,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\n  id,\n  \"name\",\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Clients\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Clients_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Clients_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT\n  id,\n  \"name\",\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Clients\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Clients_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Clients_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -1054,6 +1174,16 @@
 								},
 								"sink": {
 									"name": "updated_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "deleted_at",
 									"type": "DateTime"
 								}
 							}
@@ -1127,7 +1257,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\nid, \nproject_name, \nproject_number, \nproject_type, \ndetails, \ndescription, \ndelivery_date, \nbudget_rate, \ncurrency, \nimage, \nfiles, \nmeta_data, \nsustainability, \nbrand_id, \nagency_id, \nregion, \nimport_key, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Projects\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT\nid, \nproject_name, \nproject_number, \nproject_type, \ndetails, \ndescription, \ndelivery_date, \nbudget_rate, \ncurrency, \nimage, \nfiles, \nmeta_data, \nsustainability, \nbrand_id, \nagency_id, \nregion, \nimport_key, \nproject_region_id,\nclient_id,\ntag_ids,\ncurrency_id,\nproject_status_id,\nproject_category_id,\ncreated_at - interval '8 hour'  as created_at,\nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Projects\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -1327,6 +1457,76 @@
 									"name": "updated_at",
 									"type": "DateTime"
 								}
+							},
+							{
+								"source": {
+									"name": "project_region_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "project_region_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "client_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "client_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "deleted_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "tag_ids",
+									"type": "String"
+								},
+								"sink": {
+									"name": "tag_ids",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "currency_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "currency_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "project_status_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "project_status_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "project_category_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "project_category_id",
+									"type": "Int32"
+								}
 							}
 						]
 					}
@@ -1398,7 +1598,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\n  id,\n  service_category,\n  service,\n  service_unit,\n  service_qty,\n  service_rate,\n  service_cost,\n  queued_bid_id,\n  service_item_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Queued_Bid_Items\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Queued_Bid_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Queued_Bid_Items_MaxDate').output.firstRow.max_updated_at})\n",
+							"value": "SELECT\n  id,\n  service_category,\n  service,\n  service_unit,\n  service_qty,\n  service_rate,\n  service_cost,\n  queued_bid_id,\n  service_item_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Queued_Bid_Items\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Queued_Bid_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Queued_Bid_Items_MaxDate').output.firstRow.max_updated_at})\n",
 							"type": "Expression"
 						}
 					},
@@ -1516,6 +1716,16 @@
 								},
 								"sink": {
 									"name": "updated_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "deleted_at",
 									"type": "DateTime"
 								}
 							}
@@ -1589,7 +1799,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT\n  id,\n  client_name,\n  agency_name,\n  brand_name,\n  project_name,\n  project_number,\n  bid_number,\n  supplier_name,\n  bid_type,\n  raw_bid_status,\n  bid_date,\n  bid_version,\n  bid_total_cost,\n  raw_region,\n  \"name\",\n  document_id,\n  document_parsed,\n  doc_parser_upload_id,\n  doc_parser_template,\n  approved,\n  currency,\n  vendor_id,\n  project_id,\n  region,\n  bid_status,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at \nFROM public.\"Queued_Bids\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Queued_Bids_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Queued_Bids_MaxDate').output.firstRow.max_updated_at})\n\n",
+							"value": "SELECT\n  id,\n  client_name,\n  agency_name,\n  brand_name,\n  project_name,\n  project_number,\n  bid_number,\n  supplier_name,\n  bid_type,\n  raw_bid_status,\n  bid_date,\n  bid_version,\n  bid_total_cost,\n  raw_region,\n  \"name\",\n  document_id,\n  document_parsed,\n  doc_parser_upload_id,\n  doc_parser_template,\n  approved,\n  currency,\n  vendor_id,\n  project_id,\n  region,\n  bid_status,\n  bid_country_id,\n  currency_id,\n  bid_status_id,\n  created_at - interval '8 hour'  as created_at, \n  updated_at - interval '8 hour'  as updated_at,\n  deleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Queued_Bids\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Queued_Bids_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Queued_Bids_MaxDate').output.firstRow.max_updated_at})\n\n",
 							"type": "Expression"
 						}
 					},
@@ -1868,6 +2078,45 @@
 								"sink": {
 									"name": "updated_at",
 									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "bid_country_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "bid_country_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "deleted_at",
+									"type": "String"
+								},
+								"sink": {
+									"name": "deleted_at"
+								}
+							},
+							{
+								"source": {
+									"name": "currency_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "currency_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "bid_status_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "bid_status_id",
+									"type": "Int32"
 								}
 							}
 						]
