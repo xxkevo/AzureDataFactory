@@ -91,7 +91,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_Agencies",
+						"referenceName": "Source_Prodigy",
 						"type": "DatasetReference"
 					}
 				],
@@ -383,7 +383,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_Bid_Items",
+						"referenceName": "Source_Prodigy",
 						"type": "DatasetReference"
 					}
 				],
@@ -914,7 +914,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_Bids",
+						"referenceName": "Source_Prodigy",
 						"type": "DatasetReference"
 					}
 				],
@@ -1065,7 +1065,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_Brands",
+						"referenceName": "Source_Prodigy",
 						"type": "DatasetReference"
 					}
 				],
@@ -1206,7 +1206,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_Clients",
+						"referenceName": "Source_Prodigy",
 						"type": "DatasetReference"
 					}
 				],
@@ -1547,7 +1547,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_Projects",
+						"referenceName": "Source_Prodigy",
 						"type": "DatasetReference"
 					}
 				],
@@ -1748,7 +1748,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_Queued_Bid_Items",
+						"referenceName": "Source_Prodigy",
 						"type": "DatasetReference"
 					}
 				],
@@ -2138,7 +2138,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_Projects",
+						"referenceName": "Source_Prodigy",
 						"type": "DatasetReference"
 					}
 				],
@@ -2339,7 +2339,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_Projects",
+						"referenceName": "Source_Prodigy",
 						"type": "DatasetReference"
 					}
 				],
@@ -2490,7 +2490,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_Vendors",
+						"referenceName": "Source_Prodigy",
 						"type": "DatasetReference"
 					}
 				],
