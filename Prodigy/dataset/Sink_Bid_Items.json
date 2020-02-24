@@ -53,6 +53,44 @@
 				"type": "datetime",
 				"precision": 23,
 				"scale": 3
+			},
+			{
+				"name": "original_service_qty",
+				"type": "varchar"
+			},
+			{
+				"name": "original_service_rate",
+				"type": "varchar"
+			},
+			{
+				"name": "original_service_cost",
+				"type": "varchar"
+			},
+			{
+				"name": "original_service_category",
+				"type": "varchar"
+			},
+			{
+				"name": "original_service",
+				"type": "varchar"
+			},
+			{
+				"name": "original_service_unit",
+				"type": "varchar"
+			},
+			{
+				"name": "client_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "brand_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "deleted_at",
+				"type": "timestamp"
 			}
 		],
 		"typeProperties": {
