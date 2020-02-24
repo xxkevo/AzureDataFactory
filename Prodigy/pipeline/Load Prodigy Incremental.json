@@ -2408,6 +2408,9 @@
 							"type": "Expression"
 						}
 					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
@@ -2488,6 +2491,12 @@
 				"inputs": [
 					{
 						"referenceName": "Source_Prodigy",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Sink_Vendors",
 						"type": "DatasetReference"
 					}
 				]
