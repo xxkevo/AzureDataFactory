@@ -1299,6 +1299,7 @@
 					},
 					{
 						"name": "Load Projects",
+						"description": "load projects",
 						"type": "Copy",
 						"dependsOn": [
 							{
@@ -1558,7 +1559,7 @@
 										},
 										"sink": {
 											"name": "tag_ids",
-											"type": "Int32"
+											"type": "String"
 										}
 									},
 									{
