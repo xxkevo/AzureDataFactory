@@ -92,7 +92,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "deleted_at"
+									"name": "deleted_at",
+									"type": "DateTime"
 								}
 							}
 						]
