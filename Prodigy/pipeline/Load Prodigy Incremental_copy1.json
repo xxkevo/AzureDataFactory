@@ -25,7 +25,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT \nid, \"name\", \nslug, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Agencies\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Agencies_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Agencies_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT \nid, \"name\", \nslug, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\nCAST(deleted_at - interval '8 hour' as date) as deleted_at \nfrom public.\"Agencies\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Agencies_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Agencies_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -89,7 +89,7 @@
 							{
 								"source": {
 									"name": "deleted_at",
-									"type": "String"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "deleted_at"
