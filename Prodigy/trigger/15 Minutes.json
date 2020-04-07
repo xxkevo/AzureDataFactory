@@ -1,5 +1,5 @@
 {
-	"name": "Hourly",
+	"name": "15 Minutes",
 	"properties": {
 		"description": "Load Prodigy DW ",
 		"annotations": [],
@@ -15,9 +15,9 @@
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
-				"frequency": "Hour",
-				"interval": 1,
-				"startTime": "2020-04-06T20:00:00.000Z",
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2020-04-07T02:30:00.000Z",
 				"timeZone": "UTC"
 			}
 		}
