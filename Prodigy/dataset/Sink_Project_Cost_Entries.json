@@ -1,0 +1,70 @@
+{
+	"name": "Sink_Project_Cost_Entries",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Prodigy_DW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "project_cost_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "project_cost_type_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "vendor_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "description",
+				"type": "varchar"
+			},
+			{
+				"name": "created_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "deleted_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "currency_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "client_id",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Project_Cost_Entries"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
