@@ -1,0 +1,98 @@
+{
+	"name": "Sink_Project_Cost_Entry_Items",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Prodigy_DW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "project_cost_entry_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "bid_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "type",
+				"type": "varchar"
+			},
+			{
+				"name": "amount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "notes",
+				"type": "varchar"
+			},
+			{
+				"name": "custom_fields_meta_data",
+				"type": "varchar"
+			},
+			{
+				"name": "bid_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "bid_number",
+				"type": "varchar"
+			},
+			{
+				"name": "created_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "updated_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "deleted_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "sequence",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "markup_amount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "markup_percentage",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "client_id",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "Project_Cost_Entry_Items"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
