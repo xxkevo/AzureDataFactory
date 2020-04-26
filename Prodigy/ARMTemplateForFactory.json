@@ -7870,6 +7870,7 @@
 					},
 					{
 						"name": "Load Project Cost Entry Items",
+						"description": "1",
 						"type": "Copy",
 						"dependsOn": [
 							{
