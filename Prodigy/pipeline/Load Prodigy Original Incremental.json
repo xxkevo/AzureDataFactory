@@ -1,5 +1,5 @@
 {
-	"name": "Load Prodigy Table Incremental",
+	"name": "Load Prodigy Original Incremental",
 	"properties": {
 		"activities": [
 			{
