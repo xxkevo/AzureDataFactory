@@ -1453,7 +1453,7 @@
 				]
 			},
 			{
-				"name": "Truncate Staging Tables_copy1",
+				"name": "Merge_Project_Staging_To_Final",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -1520,7 +1520,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[sp_truncate_projects_staging]"
+					"storedProcedureName": "[dbo].[sp_merge_projects_staging_to_final]"
 				},
 				"linkedServiceName": {
 					"referenceName": "Prodigy_DW",
