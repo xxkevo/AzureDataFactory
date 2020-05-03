@@ -6061,7 +6061,7 @@
 			"properties": {
 				"description": "Load Prodigy DW ",
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
