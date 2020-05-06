@@ -4998,7 +4998,7 @@
 							"source": {
 								"type": "PostgreSqlSource",
 								"query": {
-									"value": "SELECT id, \nproject_cost_entry_id, \nbid_id, \n\"type\", \namount, \nnotes, \ncustom_fields_meta_data, \nbid_date, \nbid_number, \n\"sequence\", \nmarkup_amount, \nmarkup_percentage, \nclient_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Project_Cost_Entry_Items\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Project_Cost_Entry_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Project_Cost_Entry_Items_MaxDate').output.firstRow.max_updated_at})",
+									"value": "SELECT id, \nproject_cost_entry_id, \nbid_id, \n\"type\", \namount, \nnotes, \ncustom_fields_meta_data, \nbid_date, \nbid_number, \n\"sequence\", \nmarkup_amount, \nmarkup_percentage, \nclient_id,\nsaving_type_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Project_Cost_Entry_Items\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Project_Cost_Entry_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Project_Cost_Entry_Items_MaxDate').output.firstRow.max_updated_at})",
 									"type": "Expression"
 								}
 							},
@@ -5166,6 +5166,16 @@
 										},
 										"sink": {
 											"name": "client_id",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "saving_type_id",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "saving_type_id",
 											"type": "Int32"
 										}
 									}
