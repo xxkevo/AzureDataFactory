@@ -35,8 +35,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "stg",
-			"table": "Agencies"
+			"schema": "dbo",
+			"table": "Campaigns"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
