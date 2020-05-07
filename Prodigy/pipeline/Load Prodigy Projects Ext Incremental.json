@@ -1166,7 +1166,7 @@
 				]
 			},
 			{
-				"name": "Lookup_Savings_Type",
+				"name": "Lookup_Savings_Type_MaxDate",
 				"type": "Lookup",
 				"dependsOn": [
 					{
@@ -1201,7 +1201,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Lookup_Savings_Type",
+						"activity": "Lookup_Savings_Type_MaxDate",
 						"dependencyConditions": [
 							"Succeeded"
 						]
