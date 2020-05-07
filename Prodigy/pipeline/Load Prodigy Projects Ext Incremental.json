@@ -347,7 +347,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Cost_Entry_Items\") a",
+						"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Markets\") a",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
@@ -1166,7 +1166,7 @@
 				]
 			},
 			{
-				"name": "Lookup_Savings_Type_MaxDate",
+				"name": "Lookup_Saving_Types_MaxDate",
 				"type": "Lookup",
 				"dependsOn": [
 					{
@@ -1187,7 +1187,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Tenant_Roles\") a",
+						"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Saving_Types\") a",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
@@ -1201,7 +1201,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Lookup_Savings_Type_MaxDate",
+						"activity": "Lookup_Saving_Types_MaxDate",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -1219,7 +1219,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT \nid, client_id, \"name\"\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"[Saving_Types]\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Saving_Types_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Saving_Types_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT \nid, client_id, \"name\",\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Saving_Types\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Saving_Types_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Saving_Types_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -1338,7 +1338,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Roles\") a",
+						"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Cities\") a",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
@@ -1560,7 +1560,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Roles\") a",
+						"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Shoot_Types\") a",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
