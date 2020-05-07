@@ -48,21 +48,21 @@
 							},
 							{
 								"source": {
-									"name": "user_id",
-									"type": "Int32"
+									"name": "role",
+									"type": "String"
 								},
 								"sink": {
-									"name": "user_id",
-									"type": "Int32"
+									"name": "role",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "tenant_role_id",
+									"name": "client_id",
 									"type": "Int32"
 								},
 								"sink": {
-									"name": "tenant_role_id",
+									"name": "client_id",
 									"type": "Int32"
 								}
 							},
@@ -107,7 +107,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Sink_User_Tenant_Roles",
+						"referenceName": "Sink_Project_Team_Roles",
 						"type": "DatasetReference"
 					}
 				]
@@ -158,6 +158,26 @@
 							},
 							{
 								"source": {
+									"name": "client_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "client_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "type",
+									"type": "String"
+								},
+								"sink": {
+									"name": "type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "name",
 									"type": "String"
 								},
@@ -207,7 +227,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Sink_Tenants",
+						"referenceName": "Sink_Cost_Drivers_Optimizers",
 						"type": "DatasetReference"
 					}
 				]
@@ -225,7 +245,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[sp_truncate_projects_staging]"
+					"storedProcedureName": "[dbo].[sp_truncate_projects_ext_staging]"
 				},
 				"linkedServiceName": {
 					"referenceName": "Prodigy_DW",
@@ -470,11 +490,8 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "PostgreSqlSource",
-						"query": {
-							"value": "SELECT id, \"name\", client_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Agency_Producers\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Agency_Producers_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Agency_Producers_MaxDate').output.firstRow.max_updated_at})",
-							"type": "Expression"
-						}
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00"
 					},
 					"sink": {
 						"type": "AzureSqlSink"
@@ -505,23 +522,18 @@
 							},
 							{
 								"source": {
-									"name": ""
+									"name": "client_id",
+									"type": "Int32"
 								},
 								"sink": {
-									"name": "email",
-									"type": "String"
-								}
-							},
-							{
-								"sink": {
-									"name": "auth0_id",
-									"type": "String"
+									"name": "client_id",
+									"type": "Int32"
 								}
 							},
 							{
 								"source": {
 									"name": "created_at",
-									"type": "String"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "created_at",
@@ -531,7 +543,7 @@
 							{
 								"source": {
 									"name": "updated_at",
-									"type": "String"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "updated_at",
@@ -541,7 +553,7 @@
 							{
 								"source": {
 									"name": "deleted_at",
-									"type": "String"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "deleted_at",
@@ -553,13 +565,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_Prodigy",
+						"referenceName": "Sink_Agency_Producers",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Sink_Users",
+						"referenceName": "Sink_Agency_Producers",
 						"type": "DatasetReference"
 					}
 				]
@@ -611,81 +623,21 @@
 							},
 							{
 								"source": {
-									"name": "project_cost_entry_id",
+									"name": "client_id",
 									"type": "Int32"
 								},
 								"sink": {
-									"name": "project_cost_entry_id",
-									"type": "Int32"
-								}
-							},
-							{
-								"source": {
-									"name": "bid_id",
-									"type": "Int32"
-								},
-								"sink": {
-									"name": "bid_id",
+									"name": "client_id",
 									"type": "Int32"
 								}
 							},
 							{
 								"source": {
-									"name": "type",
+									"name": "name",
 									"type": "String"
 								},
 								"sink": {
-									"name": "type",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "amount",
-									"type": "Double"
-								},
-								"sink": {
-									"name": "amount",
-									"type": "Double"
-								}
-							},
-							{
-								"source": {
-									"name": "notes",
-									"type": "String"
-								},
-								"sink": {
-									"name": "notes",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "custom_fields_meta_data",
-									"type": "String"
-								},
-								"sink": {
-									"name": "custom_fields_meta_data",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "bid_date",
-									"type": "String"
-								},
-								"sink": {
-									"name": "bid_date",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "bid_number",
-									"type": "String"
-								},
-								"sink": {
-									"name": "bid_number",
+									"name": "name",
 									"type": "String"
 								}
 							},
@@ -717,56 +669,6 @@
 								"sink": {
 									"name": "deleted_at",
 									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "sequence",
-									"type": "Int32"
-								},
-								"sink": {
-									"name": "sequence",
-									"type": "Int32"
-								}
-							},
-							{
-								"source": {
-									"name": "markup_amount",
-									"type": "Single"
-								},
-								"sink": {
-									"name": "markup_amount",
-									"type": "Double"
-								}
-							},
-							{
-								"source": {
-									"name": "markup_percentage",
-									"type": "Single"
-								},
-								"sink": {
-									"name": "markup_percentage",
-									"type": "Double"
-								}
-							},
-							{
-								"source": {
-									"name": "client_id",
-									"type": "Int32"
-								},
-								"sink": {
-									"name": "client_id",
-									"type": "Int32"
-								}
-							},
-							{
-								"source": {
-									"name": "saving_type_id",
-									"type": "Int32"
-								},
-								"sink": {
-									"name": "saving_type_id",
-									"type": "Int32"
 								}
 							}
 						]
@@ -780,7 +682,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Sink_Project_Cost_Entry_Items",
+						"referenceName": "Sink_Markets",
 						"type": "DatasetReference"
 					}
 				]
@@ -831,42 +733,22 @@
 							},
 							{
 								"source": {
-									"name": "project_cost_id",
-									"type": "Int32"
-								},
-								"sink": {
-									"name": "project_cost_id",
-									"type": "Int32"
-								}
-							},
-							{
-								"source": {
-									"name": "project_cost_type_id",
-									"type": "Int32"
-								},
-								"sink": {
-									"name": "project_cost_type_id",
-									"type": "Int32"
-								}
-							},
-							{
-								"source": {
-									"name": "vendor_id",
-									"type": "Int32"
-								},
-								"sink": {
-									"name": "vendor_id",
-									"type": "Int32"
-								}
-							},
-							{
-								"source": {
-									"name": "description",
+									"name": "name",
 									"type": "String"
 								},
 								"sink": {
-									"name": "description",
+									"name": "name",
 									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "client_id",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "client_id",
+									"type": "Int32"
 								}
 							},
 							{
@@ -897,26 +779,6 @@
 								"sink": {
 									"name": "deleted_at",
 									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "currency_id",
-									"type": "Int32"
-								},
-								"sink": {
-									"name": "currency_id",
-									"type": "Int32"
-								}
-							},
-							{
-								"source": {
-									"name": "client_id",
-									"type": "Int32"
-								},
-								"sink": {
-									"name": "client_id",
-									"type": "Int32"
 								}
 							}
 						]
@@ -930,7 +792,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Sink_Project_Cost_Entries",
+						"referenceName": "Sink_Campaigns",
 						"type": "DatasetReference"
 					}
 				]
@@ -981,12 +843,12 @@
 							},
 							{
 								"source": {
-									"name": "project_id",
-									"type": "Int32"
+									"name": "bid_type",
+									"type": "String"
 								},
 								"sink": {
-									"name": "project_id",
-									"type": "Int32"
+									"name": "bid_type",
+									"type": "String"
 								}
 							},
 							{
@@ -1017,16 +879,6 @@
 								"sink": {
 									"name": "deleted_at",
 									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "client_id",
-									"type": "Int32"
-								},
-								"sink": {
-									"name": "client_id",
-									"type": "Int32"
 								}
 							}
 						]
@@ -1040,7 +892,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Sink_Project_Costs",
+						"referenceName": "Sink_Bid_Types",
 						"type": "DatasetReference"
 					}
 				]
@@ -1068,7 +920,7 @@
 					"source": {
 						"type": "PostgreSqlSource",
 						"query": {
-							"value": "SELECT SELECT id, project_type, created_at,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Project_Cost_Types\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Project_Types_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Project_Types_MaxDate').output.firstRow.max_updated_at})",
+							"value": "SELECT id, project_type, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Project_Types\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Project_Types_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Project_Types_MaxDate').output.firstRow.max_updated_at})",
 							"type": "Expression"
 						}
 					},
@@ -1091,31 +943,11 @@
 							},
 							{
 								"source": {
-									"name": "name",
+									"name": "project_type",
 									"type": "String"
 								},
 								"sink": {
-									"name": "name",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "description",
-									"type": "String"
-								},
-								"sink": {
-									"name": "description",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "custom_fields_meta_data",
-									"type": "String"
-								},
-								"sink": {
-									"name": "custom_fields_meta_data",
+									"name": "project_type",
 									"type": "String"
 								}
 							},
@@ -1160,7 +992,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Sink_Project_Cost_Type",
+						"referenceName": "Sink_Project_Types",
 						"type": "DatasetReference"
 					}
 				]
@@ -1242,31 +1074,21 @@
 							},
 							{
 								"source": {
-									"name": "tenant_id",
+									"name": "client_id",
 									"type": "Int32"
 								},
 								"sink": {
-									"name": "tenant_id",
+									"name": "client_id",
 									"type": "Int32"
 								}
 							},
 							{
 								"source": {
-									"name": "role_id",
-									"type": "Int32"
-								},
-								"sink": {
-									"name": "role_id",
-									"type": "Int32"
-								}
-							},
-							{
-								"source": {
-									"name": "auth0_id",
+									"name": "name",
 									"type": "String"
 								},
 								"sink": {
-									"name": "auth0_id",
+									"name": "name",
 									"type": "String"
 								}
 							},
@@ -1311,7 +1133,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Sink_Tenant_Roles",
+						"referenceName": "Sink_Saving_Types",
 						"type": "DatasetReference"
 					}
 				]
@@ -1403,16 +1225,6 @@
 							},
 							{
 								"source": {
-									"name": "auth0_template_id",
-									"type": "String"
-								},
-								"sink": {
-									"name": "auth0_template_id",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "created_at",
 									"type": "String"
 								},
@@ -1452,13 +1264,13 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Sink_Roles",
+						"referenceName": "Sink_Cities",
 						"type": "DatasetReference"
 					}
 				]
 			},
 			{
-				"name": "Merge_Project_Staging_To_Final",
+				"name": "Merge_Project_Ext_Staging_To_Final",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -1516,7 +1328,7 @@
 						]
 					},
 					{
-						"activity": "Load Lookup_Shoot_Types",
+						"activity": "Load Shoot Types",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -1531,7 +1343,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[sp_merge_projects_staging_to_final]"
+					"storedProcedureName": "[dbo].[sp_merge_projects_ext_staging_to_final]"
 				},
 				"linkedServiceName": {
 					"referenceName": "Prodigy_DW",
@@ -1570,7 +1382,7 @@
 				}
 			},
 			{
-				"name": "Load Lookup_Shoot_Types",
+				"name": "Load Shoot Types",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -1625,16 +1437,6 @@
 							},
 							{
 								"source": {
-									"name": "auth0_template_id",
-									"type": "String"
-								},
-								"sink": {
-									"name": "auth0_template_id",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "created_at",
 									"type": "String"
 								},
@@ -1674,7 +1476,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Sink_Roles",
+						"referenceName": "Sink_Shoot_Types",
 						"type": "DatasetReference"
 					}
 				]
