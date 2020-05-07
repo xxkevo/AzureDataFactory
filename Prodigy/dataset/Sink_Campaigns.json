@@ -35,7 +35,7 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dbo",
+			"schema": "stg",
 			"table": "Campaigns"
 		}
 	},
