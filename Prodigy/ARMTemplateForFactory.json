@@ -1314,7 +1314,7 @@
 							"source": {
 								"type": "PostgreSqlSource",
 								"query": {
-									"value": "SELECT\n  id,\n  \"name\",\n  slug,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Clients\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Clients_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Clients_MaxDate').output.firstRow.max_updated_at})",
+									"value": "SELECT\n  id,\n  \"name\",\n  slug,\ntenant_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Clients\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Clients_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Clients_MaxDate').output.firstRow.max_updated_at})",
 									"type": "Expression"
 								}
 							},
@@ -1383,6 +1383,16 @@
 										"sink": {
 											"name": "deleted_at",
 											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "tenant_id",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "tenant_id",
+											"type": "Int32"
 										}
 									}
 								]
@@ -1459,7 +1469,7 @@
 							"source": {
 								"type": "PostgreSqlSource",
 								"query": {
-									"value": "SELECT\nid, \nproject_name, \nproject_number, \nproject_type, \ndetails, \ndescription, \ndelivery_date, \nbudget_rate, \ncurrency, \nimage, \nfiles, \nmeta_data, \nsustainability, \nbrand_id, \nagency_id, \nregion, \nimport_key, \nproject_region_id,\nclient_id,\ntag_ids,\ncurrency_id,\nproject_status_id,\nproject_category_id,\ncreated_at - interval '8 hour'  as created_at,\nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Projects\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_updated_at})",
+									"value": "SELECT\nid, \nproject_name, \nproject_number, \nproject_type, \ndetails, \ndescription, \ndelivery_date, \nbudget_rate, \ncurrency, \nimage, \nfiles, \nmeta_data, \nsustainability, \nbrand_id, \nagency_id, \nregion, \nimport_key, \nproject_region_id,\nclient_id,\ntag_ids,\ncurrency_id,\nproject_status_id,\nproject_category_id,\nbid_type_id, \npre_bid_date, \nproduction_start_date, \nactualized_date, \nagency_producer_id, \nproject_type_id, \ncampaign_id, \nmarket_id,\ncreated_at - interval '8 hour'  as created_at,\nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Projects\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_updated_at})",
 									"type": "Expression"
 								}
 							},
@@ -1727,6 +1737,86 @@
 										},
 										"sink": {
 											"name": "project_category_id",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "bid_type_id",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "bid_type_id",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "pre_bid_date",
+											"type": "String"
+										},
+										"sink": {
+											"name": "pre_bid_date",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "production_start_date",
+											"type": "String"
+										},
+										"sink": {
+											"name": "production_start_date",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "actualized_date",
+											"type": "String"
+										},
+										"sink": {
+											"name": "actualized_date",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "agency_producer_id",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "agency_producer_id",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "project_type_id",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "project_type_id",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "campaign_id",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "campaign_id",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "market_id",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "market_id",
 											"type": "Int32"
 										}
 									}
