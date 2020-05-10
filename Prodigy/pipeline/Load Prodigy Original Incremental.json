@@ -1565,8 +1565,7 @@
 							},
 							{
 								"source": {
-									"name": "bid_type_id",
-									"type": "Int32"
+									"name": ""
 								},
 								"sink": {
 									"name": "bid_type_id",
@@ -1575,8 +1574,7 @@
 							},
 							{
 								"source": {
-									"name": "pre_bid_date",
-									"type": "String"
+									"name": ""
 								},
 								"sink": {
 									"name": "pre_bid_date",
@@ -1585,8 +1583,7 @@
 							},
 							{
 								"source": {
-									"name": "production_start_date",
-									"type": "String"
+									"name": ""
 								},
 								"sink": {
 									"name": "production_start_date",
@@ -1595,8 +1592,7 @@
 							},
 							{
 								"source": {
-									"name": "actualized_date",
-									"type": "String"
+									"name": ""
 								},
 								"sink": {
 									"name": "actualized_date",
@@ -1605,8 +1601,7 @@
 							},
 							{
 								"source": {
-									"name": "agency_producer_id",
-									"type": "Int32"
+									"name": ""
 								},
 								"sink": {
 									"name": "agency_producer_id",
@@ -1615,8 +1610,7 @@
 							},
 							{
 								"source": {
-									"name": "project_type_id",
-									"type": "Int32"
+									"name": ""
 								},
 								"sink": {
 									"name": "project_type_id",
@@ -1625,8 +1619,7 @@
 							},
 							{
 								"source": {
-									"name": "campaign_id",
-									"type": "Int32"
+									"name": ""
 								},
 								"sink": {
 									"name": "campaign_id",
@@ -1635,8 +1628,7 @@
 							},
 							{
 								"source": {
-									"name": "market_id",
-									"type": "Int32"
+									"name": ""
 								},
 								"sink": {
 									"name": "market_id",
