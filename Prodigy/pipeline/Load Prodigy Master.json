@@ -17,6 +17,12 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
+					},
+					{
+						"activity": "Load Prodigy Projects Ext Incremental",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
 				"policy": {
@@ -117,6 +123,26 @@
 				"typeProperties": {
 					"pipeline": {
 						"referenceName": "Load Prodigy Projects Incremental",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Load Prodigy Projects Ext Incremental",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Log Load Reults",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Load Prodigy Projects Ext Incremental",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
