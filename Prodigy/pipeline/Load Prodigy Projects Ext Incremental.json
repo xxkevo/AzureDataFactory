@@ -490,8 +490,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "AzureSqlSource",
-						"queryTimeout": "02:00:00"
+						"type": "PostgreSqlSource",
+						"query": {
+							"value": "SELECT id, \"name\", client_id, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Agency_Producers\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Agency_Producers_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Agency_Producers_MaxDate').output.firstRow.max_updated_at})",
+							"type": "Expression"
+						}
 					},
 					"sink": {
 						"type": "AzureSqlSink"
@@ -565,7 +568,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Sink_Agency_Producers",
+						"referenceName": "Source_Prodigy",
 						"type": "DatasetReference"
 					}
 				],
