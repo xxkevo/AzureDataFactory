@@ -13,25 +13,6 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/Source_Prodigy')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "Prodigy",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "PostgreSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "public",
-					"table": "Agencies"
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/Load Prodigy Original Incremental')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -137,15 +118,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Agencies",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -176,8 +155,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Agencies",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -208,8 +186,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Bid_Items",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -433,15 +410,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Bid_Items",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -472,8 +447,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Bids",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -967,15 +941,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Bids",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -1006,8 +978,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Brands",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -1121,15 +1092,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Brands",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -1160,8 +1129,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -1275,15 +1243,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -1314,8 +1280,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -1700,15 +1665,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Projects",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -1739,8 +1702,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -1924,15 +1886,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Queued_Bid_Items",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -1963,8 +1923,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -2337,15 +2296,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Queued_Bids",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -2376,8 +2333,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -2541,15 +2497,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Service_Items",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -2580,8 +2534,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -2695,15 +2648,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Vendors",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -2877,8 +2828,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -2909,8 +2859,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -2941,8 +2890,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -2973,8 +2921,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -3005,8 +2952,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -3037,8 +2983,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -3069,8 +3014,7 @@
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						}
 					},
@@ -3164,15 +3108,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Bid_Countries",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -3266,15 +3208,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Bid_Statuses",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -3368,15 +3308,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Currencies",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -3470,15 +3408,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Project_Categories",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -3572,15 +3508,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Project_Regions",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -3674,15 +3608,13 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Project_Statuses",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -3776,3339 +3708,20 @@
 						"inputs": [
 							{
 								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Sink_Tags",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
 				],
 				"annotations": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Source_Prodigy')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Load Prodigy Projects Ext Incremental')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Load Project Team Roles",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Project_Team_Roles_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \n\"role\", \nclient_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Project_Team_Roles\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Project_Team_Roles_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Project_Team_Roles_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "role",
-											"type": "String"
-										},
-										"sink": {
-											"name": "role",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "client_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "client_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Project_Team_Roles",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Load Cost Drivers Optimizers",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Cost_Drivers_Optimizers_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, client_id, \"type\", \"name\",\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Cost_Drivers_Optimizers\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Cost_Drivers_Optimizers_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Cost_Drivers_Optimizers_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "client_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "client_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "type",
-											"type": "String"
-										},
-										"sink": {
-											"name": "type",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "name",
-											"type": "String"
-										},
-										"sink": {
-											"name": "name",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Cost_Drivers_Optimizers",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Truncate Staging Tables",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[sp_truncate_projects_ext_staging]"
-						},
-						"linkedServiceName": {
-							"referenceName": "Prodigy_DW",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Lookup_Project_Team_Roles_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Team_Roles\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Lookup_Cost_Drivers_Optimizers_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Cost_Drivers_Optimizers\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Lookup_Agency_Producers_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Agency_Producers\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Lookup_Markets_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Markets\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Lookup_Campaigns_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Campaigns\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Lookup_Bid_Types_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Bid_Types\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Lookup_Project_Types_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Types\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Load Agency Producers",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Agency_Producers_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \"name\", client_id, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Agency_Producers\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Agency_Producers_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Agency_Producers_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "name",
-											"type": "String"
-										},
-										"sink": {
-											"name": "name",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "client_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "client_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "DateTime"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "DateTime"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Agency_Producers",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Load Markets",
-						"description": "1",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Markets_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, client_id, \"name\", \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Markets\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Markets_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Markets_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "client_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "client_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "name",
-											"type": "String"
-										},
-										"sink": {
-											"name": "name",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Markets",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Load Campaigns",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Campaigns_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \"name\", client_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Campaigns\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Campaigns_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Campaigns_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "name",
-											"type": "String"
-										},
-										"sink": {
-											"name": "name",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "client_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "client_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Campaigns",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Load Bid Types",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Bid_Types_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, bid_type,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Bid_Types\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Bid_Types_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Bid_Types_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "bid_type",
-											"type": "String"
-										},
-										"sink": {
-											"name": "bid_type",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Bid_Types",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Load Project Type",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Project_Types_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, project_type, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Project_Types\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Project_Types_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Project_Types_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "project_type",
-											"type": "String"
-										},
-										"sink": {
-											"name": "project_type",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Project_Types",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Lookup_Saving_Types_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Saving_Types\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Load Saving Types",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Saving_Types_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT \nid, client_id, \"name\",\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Saving_Types\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Saving_Types_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Saving_Types_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "client_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "client_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "name",
-											"type": "String"
-										},
-										"sink": {
-											"name": "name",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Saving_Types",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Lookup_Cities_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Cities\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Load Cities",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Cities_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \"name\",\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Roles\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Cities_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Cities_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "name",
-											"type": "String"
-										},
-										"sink": {
-											"name": "name",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Cities",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Merge_Project_Ext_Staging_To_Final",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Load Project Team Roles",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Cost Drivers Optimizers",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Agency Producers",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Markets",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Campaigns",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Bid Types",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Project Type",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Saving Types",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Cities",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Shoot Types",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[sp_merge_projects_ext_staging_to_final]"
-						},
-						"linkedServiceName": {
-							"referenceName": "Prodigy_DW",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Lookup_Shoot_Types_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Shoot_Types\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Load Shoot Types",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Shoot_Types_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \"name\", \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Shoot_Types\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Shoot_Types_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Shoot_Types_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "name",
-											"type": "String"
-										},
-										"sink": {
-											"name": "name",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Shoot_Types",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Source_Prodigy')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Load Prodigy Projects Incremental')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Load User Tenant Roles",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_User_Tenant_Roles_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \nuser_id, \ntenant_role_id, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"User_Tenant_Roles\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_User_Tenant_Roles_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_User_Tenant_Roles_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "user_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "user_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "tenant_role_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "tenant_role_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_User_Tenant_Roles",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Load Tenants",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Tenants_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \"name\",\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Tenants\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Tenants_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Tenants_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "name",
-											"type": "String"
-										},
-										"sink": {
-											"name": "name",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Tenants",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Truncate Staging Tables",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[sp_truncate_projects_staging]"
-						},
-						"linkedServiceName": {
-							"referenceName": "Prodigy_DW",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Lookup_User_Tenant_Roles_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"User_Tenant_Roles\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Lookup_Tenants_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Tenants\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Lookup_Users_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Users\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Lookup_Project_Cost_Entry_Items_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Cost_Entry_Items\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Lookup_Project_Cost_Entries_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Cost_Entries\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Lookup_Project_Costs_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Costs\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Lookup_Project_Cost_Types_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Cost_Types\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Load Users",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Users_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \n\"name\", \nemail, \nauth0_id, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Users\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Users_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Users_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "name",
-											"type": "String"
-										},
-										"sink": {
-											"name": "name",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "email",
-											"type": "String"
-										},
-										"sink": {
-											"name": "email",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "auth0_id",
-											"type": "String"
-										},
-										"sink": {
-											"name": "auth0_id",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Users",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Load Project Cost Entry Items",
-						"description": "1",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Project_Cost_Entry_Items_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \nproject_cost_entry_id, \nbid_id, \n\"type\", \namount, \nnotes, \ncustom_fields_meta_data, \nbid_date, \nbid_number, \n\"sequence\", \nmarkup_amount, \nmarkup_percentage, \nclient_id,\nsaving_type_id,\nreporting_period_start - interval '8 hour' as reporting_period_start,\nreporting_period_end - interval '8 hour'as reporting_period_end,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Project_Cost_Entry_Items\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Project_Cost_Entry_Items_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Project_Cost_Entry_Items_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "project_cost_entry_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "project_cost_entry_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "bid_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "bid_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "type",
-											"type": "String"
-										},
-										"sink": {
-											"name": "type",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "amount",
-											"type": "Double"
-										},
-										"sink": {
-											"name": "amount",
-											"type": "Double"
-										}
-									},
-									{
-										"source": {
-											"name": "notes",
-											"type": "String"
-										},
-										"sink": {
-											"name": "notes",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "custom_fields_meta_data",
-											"type": "String"
-										},
-										"sink": {
-											"name": "custom_fields_meta_data",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "bid_date",
-											"type": "String"
-										},
-										"sink": {
-											"name": "bid_date",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "bid_number",
-											"type": "String"
-										},
-										"sink": {
-											"name": "bid_number",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "sequence",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "sequence",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "markup_amount",
-											"type": "Single"
-										},
-										"sink": {
-											"name": "markup_amount",
-											"type": "Double"
-										}
-									},
-									{
-										"source": {
-											"name": "markup_percentage",
-											"type": "Single"
-										},
-										"sink": {
-											"name": "markup_percentage",
-											"type": "Double"
-										}
-									},
-									{
-										"source": {
-											"name": "client_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "client_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "saving_type_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "saving_type_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "reporting_period_start",
-											"type": "String"
-										},
-										"sink": {
-											"name": "reporting_period_start",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "reporting_period_end",
-											"type": "String"
-										},
-										"sink": {
-											"name": "reporting_period_end",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Project_Cost_Entry_Items",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Load Project Cost Entries",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Project_Cost_Entries_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \nproject_cost_id, \nproject_cost_type_id, \nvendor_id, \ndescription, \ncurrency_id, \nclient_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Project_Cost_Entries\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Project_Cost_Entries_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Project_Cost_Entries_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "project_cost_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "project_cost_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "project_cost_type_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "project_cost_type_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "vendor_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "vendor_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "description",
-											"type": "String"
-										},
-										"sink": {
-											"name": "description",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "currency_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "currency_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "client_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "client_id",
-											"type": "Int32"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Project_Cost_Entries",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Load Project Costs",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Project_Costs_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \nproject_id, \nclient_id,\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Project_Costs\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Project_Costs_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Project_Costs_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "project_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "project_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "client_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "client_id",
-											"type": "Int32"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Project_Costs",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Load Project Costs Types",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Project_Cost_Types_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \n\"name\", \ndescription, \ncustom_fields_meta_data, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Project_Cost_Types\" \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Project_Cost_Types_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Project_Cost_Types_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "name",
-											"type": "String"
-										},
-										"sink": {
-											"name": "name",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "description",
-											"type": "String"
-										},
-										"sink": {
-											"name": "description",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "custom_fields_meta_data",
-											"type": "String"
-										},
-										"sink": {
-											"name": "custom_fields_meta_data",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Project_Cost_Type",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Lookup_Tenant_Roles_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Tenant_Roles\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Load Tenant Roles_",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Tenant_Roles_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT \nid, \ntenant_id, \nrole_id, \nauth0_id, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Tenant_Roles\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Tenant_Roles_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Tenant_Roles_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "tenant_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "tenant_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "role_id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "role_id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "auth0_id",
-											"type": "String"
-										},
-										"sink": {
-											"name": "auth0_id",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Tenant_Roles",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Lookup_Roles_MaxDate",
-						"type": "Lookup",
-						"dependsOn": [
-							{
-								"activity": "Truncate Staging Tables",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Roles\") a",
-								"queryTimeout": "02:00:00"
-							},
-							"dataset": {
-								"referenceName": "Sink_Clients",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						}
-					},
-					{
-						"name": "Load Roles",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Lookup_Roles_MaxDate",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "PostgreSqlSource",
-								"query": {
-									"value": "SELECT id, \n\"name\", \nauth0_template_id, \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Roles\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Roles_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Roles_MaxDate').output.firstRow.max_updated_at})",
-									"type": "Expression"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "id",
-											"type": "Int32"
-										},
-										"sink": {
-											"name": "id",
-											"type": "Int32"
-										}
-									},
-									{
-										"source": {
-											"name": "name",
-											"type": "String"
-										},
-										"sink": {
-											"name": "name",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "auth0_template_id",
-											"type": "String"
-										},
-										"sink": {
-											"name": "auth0_template_id",
-											"type": "String"
-										}
-									},
-									{
-										"source": {
-											"name": "created_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "created_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "updated_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "updated_at",
-											"type": "DateTime"
-										}
-									},
-									{
-										"source": {
-											"name": "deleted_at",
-											"type": "String"
-										},
-										"sink": {
-											"name": "deleted_at",
-											"type": "DateTime"
-										}
-									}
-								]
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Source_Prodigy",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Sink_Roles",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Merge_Project_Staging_To_Final",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Load User Tenant Roles",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Tenants",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Users",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Project Cost Entry Items",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Project Cost Entries",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Project Costs",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Project Costs Types",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Tenant Roles_",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Roles",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[sp_merge_projects_staging_to_final]"
-						},
-						"linkedServiceName": {
-							"referenceName": "Prodigy_DW",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Source_Prodigy')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Load Prodigy Master')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Calc_CostSavings",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Load Prodigy Original Incremental",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Prodigy Projects Incremental",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "Load Prodigy Projects Ext Incremental",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[sp_calc_cost_savings]"
-						},
-						"linkedServiceName": {
-							"referenceName": "Prodigy_DW",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Log Load Reults",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[sp_log_loadresults_logs]"
-						},
-						"linkedServiceName": {
-							"referenceName": "Prodigy_DW",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Update Load Results",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Calc_CostSavings",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[sp_update_loadresults_logs]"
-						},
-						"linkedServiceName": {
-							"referenceName": "Prodigy_DW",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Load Prodigy Original Incremental",
-						"type": "ExecutePipeline",
-						"dependsOn": [
-							{
-								"activity": "Log Load Reults",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "Load Prodigy Original Incremental",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					},
-					{
-						"name": "Load Prodigy Projects Incremental",
-						"type": "ExecutePipeline",
-						"dependsOn": [
-							{
-								"activity": "Log Load Reults",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "Load Prodigy Projects Incremental",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					},
-					{
-						"name": "Load Prodigy Projects Ext Incremental",
-						"type": "ExecutePipeline",
-						"dependsOn": [
-							{
-								"activity": "Log Load Reults",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "Load Prodigy Projects Ext Incremental",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/Load Prodigy Original Incremental')]",
-				"[concat(variables('factoryId'), '/pipelines/Load Prodigy Projects Incremental')]",
-				"[concat(variables('factoryId'), '/pipelines/Load Prodigy Projects Ext Incremental')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/15 Minutes')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "Load Prodigy DW ",
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "Load Prodigy Master",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 15,
-						"startTime": "2020-04-30T02:30:00.000Z",
-						"timeZone": "UTC"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/Load Prodigy Master')]"
-			]
+			"dependsOn": []
 		}
 	]
 }
