@@ -654,7 +654,7 @@
 							"source": {
 								"type": "PostgreSqlSource",
 								"query": {
-									"value": "SELECT\n  id,\n  bid_number,\n  bid_type,\n  bid_status,\n  bid_date - interval '8 hour'  as bid_date,\n  bid_version,\n  bid_total_cost,\n  region,\n  currency,\n  queued_bid_id,\n  vendor_id,\n  project_id,\n  import_key,\n  original_client_name,\n  original_agency_name,\n  original_brand_name,\n  original_project_name,\n  original_project_number,\n  original_bid_number,\n  original_supplier_name,\n  original_bid_type,\n  original_bid_status,\n  original_raw_bid_status,\n  original_bid_date,\n  original_bid_version,\n  original_bid_total_cost,\n  original_region,\n  original_raw_region,\n  original_name,\n  original_document_id,\n  original_document_parsed,\n  original_doc_parser_upload_id,\n  original_doc_parser_template,\n  original_currency,\n  pdf,\n  bid_country_id,\n  client_id,\n  brand_id,\n  currency_id,\n  original_currency_id,\n  bid_status_id,\n  original_bid_status_id,\n  created_at - interval '8 hour'  as created_at, \n  updated_at - interval '8 hour'  as updated_at,\n  deleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Bids\"\nWHERE created_at - interval '8 hour 3 second'>  (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 3 second'> (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_updated_at})",
+									"value": "SELECT\n  id,\n  bid_number,\n  bid_type,\n  bid_status,\n  bid_date,\n  bid_version,\n  bid_total_cost,\n  region,\n  currency,\n  queued_bid_id,\n  vendor_id,\n  project_id,\n  import_key,\n  original_client_name,\n  original_agency_name,\n  original_brand_name,\n  original_project_name,\n  original_project_number,\n  original_bid_number,\n  original_supplier_name,\n  original_bid_type,\n  original_bid_status,\n  original_raw_bid_status,\n  original_bid_date,\n  original_bid_version,\n  original_bid_total_cost,\n  original_region,\n  original_raw_region,\n  original_name,\n  original_document_id,\n  original_document_parsed,\n  original_doc_parser_upload_id,\n  original_doc_parser_template,\n  original_currency,\n  pdf,\n  bid_country_id,\n  client_id,\n  brand_id,\n  currency_id,\n  original_currency_id,\n  bid_status_id,\n  original_bid_status_id,\n  created_at - interval '8 hour'  as created_at, \n  updated_at - interval '8 hour'  as updated_at,\n  deleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Bids\"\nWHERE created_at - interval '8 hour 3 second'>  (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 3 second'> (@{activity('Lookup_Bids_MaxDate').output.firstRow.max_updated_at})",
 									"type": "Expression"
 								}
 							},
@@ -1497,7 +1497,7 @@
 							"source": {
 								"type": "PostgreSqlSource",
 								"query": {
-									"value": "SELECT\nid, \nproject_name, \nproject_number, \nproject_type, \ndetails, \ndescription, \ndelivery_date - interval '8 hour'  as delivery_date, \nbudget_rate, \ncurrency, \nimage, \nfiles, \nmeta_data, \nsustainability, \nbrand_id, \nagency_id, \nregion, \nimport_key, \nproject_region_id,\nclient_id,\ntag_ids,\ncurrency_id,\nproject_status_id,\nproject_category_id,\nbid_type_id, \npre_bid_date, \nproduction_start_date, \nactualized_date, \nagency_producer_id, \nproject_type_id, \ncampaign_id, \nmarket_id,\ncreated_at - interval '8 hour'  as created_at,\nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Projects\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_updated_at})",
+									"value": "SELECT\nid, \nproject_name, \nproject_number, \nproject_type, \ndetails, \ndescription, \ndelivery_date, \nbudget_rate, \ncurrency, \nimage, \nfiles, \nmeta_data, \nsustainability, \nbrand_id, \nagency_id, \nregion, \nimport_key, \nproject_region_id,\nclient_id,\ntag_ids,\ncurrency_id,\nproject_status_id,\nproject_category_id,\nbid_type_id, \npre_bid_date, \nproduction_start_date, \nactualized_date, \nagency_producer_id, \nproject_type_id, \ncampaign_id, \nmarket_id,\ncreated_at - interval '8 hour'  as created_at,\nupdated_at - interval '8 hour'  as updated_at,\ndeleted_at - interval '8 hour'  as deleted_at \nFROM public.\"Projects\"\nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_created_at})\nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Projects_MaxDate').output.firstRow.max_updated_at})",
 									"type": "Expression"
 								}
 							},
@@ -7074,6 +7074,12 @@
 								"dependencyConditions": [
 									"Succeeded"
 								]
+							},
+							{
+								"activity": "Load Contacts",
+								"dependencyConditions": [
+									"Succeeded"
+								]
 							}
 						],
 						"policy": {
@@ -7091,6 +7097,150 @@
 							"referenceName": "Prodigy_DW",
 							"type": "LinkedServiceReference"
 						}
+					},
+					{
+						"name": "Lookup_Contacts_MaxDate",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Truncate Staging Tables",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"contacts\") a",
+								"queryTimeout": "02:00:00"
+							},
+							"dataset": {
+								"referenceName": "Sink_Clients",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "Load Contacts",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Lookup_Contacts_MaxDate",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "PostgreSqlSource",
+								"query": {
+									"value": "SELECT id, \nclient_id, \n\"name\", \ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Contacts\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Contacts_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Contacts_MaxDate').output.firstRow.max_updated_at})",
+									"type": "Expression"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "id",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "id",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "client_id",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "client_id",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "created_at",
+											"type": "String"
+										},
+										"sink": {
+											"name": "created_at",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "updated_at",
+											"type": "String"
+										},
+										"sink": {
+											"name": "updated_at",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "deleted_at",
+											"type": "String"
+										},
+										"sink": {
+											"name": "deleted_at",
+											"type": "DateTime"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "Source_Prodigy",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Sink_Contacts",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"annotations": []
@@ -7107,7 +7257,8 @@
 				"[concat(variables('factoryId'), '/datasets/Sink_Project_Costs')]",
 				"[concat(variables('factoryId'), '/datasets/Sink_Project_Cost_Type')]",
 				"[concat(variables('factoryId'), '/datasets/Sink_Tenant_Roles')]",
-				"[concat(variables('factoryId'), '/datasets/Sink_Roles')]"
+				"[concat(variables('factoryId'), '/datasets/Sink_Roles')]",
+				"[concat(variables('factoryId'), '/datasets/Sink_Contacts')]"
 			]
 		},
 		{
@@ -9640,6 +9791,53 @@
 				"typeProperties": {}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sink_Contacts')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Prodigy_DW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "name",
+						"type": "varchar"
+					},
+					{
+						"name": "slug",
+						"type": "varchar"
+					},
+					{
+						"name": "created_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "updated_at",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "Contacts"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Prodigy_DW')]"
+			]
 		}
 	]
 }
