@@ -227,7 +227,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Agencies\") a\n",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Agencies",
@@ -259,7 +260,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Bid_Items\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Bid_Items",
@@ -523,7 +525,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Bids\") a\n\n\n\n",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Bids",
@@ -1057,7 +1060,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"brands\") a\n\n\n\n",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Brands",
@@ -1211,7 +1215,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"clients\") a\n",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -1365,7 +1370,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"projects\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -1790,7 +1796,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Queued_Bid_Items\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -2014,7 +2021,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Queued_Bids\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -2427,7 +2435,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Service_Items\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -2631,7 +2640,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Vendors\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -2928,7 +2938,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Bid_Countries\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -2960,7 +2971,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Bid_Statuses\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -2992,7 +3004,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Currencies\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -3024,7 +3037,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Categories\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -3056,7 +3070,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Regions\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -3088,7 +3103,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Statuses\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -3120,7 +3136,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Tags\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -4134,7 +4151,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Team_Roles\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -4166,7 +4184,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Cost_Drivers_Optimizers\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -4198,7 +4217,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Agency_Producers\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -4230,7 +4250,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Markets\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -4262,7 +4283,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Campaigns\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -4294,7 +4316,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Bid_Types\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -4326,7 +4349,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Types\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -4899,7 +4923,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Saving_Types\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -5043,7 +5068,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Cities\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -5075,7 +5101,7 @@
 							"source": {
 								"type": "PostgreSqlSource",
 								"query": {
-									"value": "SELECT id, \"name\",\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Roles\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Cities_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Cities_MaxDate').output.firstRow.max_updated_at})",
+									"value": "SELECT id, \"name\",\ncreated_at - interval '8 hour'  as created_at, \nupdated_at - interval '8 hour'  as updated_at ,\ndeleted_at - interval '8 hour'  as deleted_at \nfrom public.\"Cities\"  \nWHERE created_at - interval '8 hour 2 second'>  (@{activity('Lookup_Cities_MaxDate').output.firstRow.max_created_at}) \nOR updated_at - interval '8 hour 2 second'> (@{activity('Lookup_Cities_MaxDate').output.firstRow.max_updated_at})",
 									"type": "Expression"
 								}
 							},
@@ -5258,7 +5284,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Shoot_Types\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -5639,7 +5666,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"User_Tenant_Roles\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -5671,7 +5699,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Tenants\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -5703,7 +5732,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Users\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -5735,7 +5765,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Cost_Entry_Items\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -5767,7 +5798,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Cost_Entries\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -5799,7 +5831,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Costs\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -5831,7 +5864,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Project_Cost_Types\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -6614,7 +6648,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Tenant_Roles\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -6768,7 +6803,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"Roles\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -6993,7 +7029,8 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": "SELECT \nCASE WHEN max_created_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_created_at),'''')\nELSE '''1990-01-01''' END as max_created_at,\nCASE WHEN max_updated_at IS NOT NULL THEN CONCAT('''',CONVERT(varchar(50), max_updated_at),'''')\nELSE '''1990-01-01''' END as max_updated_at\n FROM(SELECT MAX(FORMAT(created_at,'yyyy-MM-dd HH:mm:ss')) as max_created_at,  \n\t\t\t\tMAX(FORMAT(updated_at,'yyyy-MM-dd HH:mm:ss')) as max_updated_at \n\t\tFROM dbo.\"contacts\") a",
-								"queryTimeout": "02:00:00"
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
 							"dataset": {
 								"referenceName": "Sink_Clients",
@@ -7307,7 +7344,7 @@
 					"recurrence": {
 						"frequency": "Minute",
 						"interval": 15,
-						"startTime": "2020-04-30T02:30:00.000Z",
+						"startTime": "2020-04-30T02:30:00Z",
 						"timeZone": "UTC"
 					}
 				}

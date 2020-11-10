@@ -29,7 +29,7 @@
 	},
 	"resources": [
 		{
-			"name": "ArmTemplate_0",
+			"name": "Prodigy_ArmTemplate_0",
 			"type": "Microsoft.Resources/deployments",
 			"apiVersion": "2018-02-01",
 			"properties": {
@@ -53,7 +53,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "ArmTemplate_1",
+			"name": "Prodigy_ArmTemplate_1",
 			"type": "Microsoft.Resources/deployments",
 			"apiVersion": "2018-02-01",
 			"properties": {
@@ -69,11 +69,11 @@
 				}
 			},
 			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'ArmTemplate_0')]"
+				"[resourceId('Microsoft.Resources/deployments', 'Prodigy_ArmTemplate_0')]"
 			]
 		},
 		{
-			"name": "ArmTemplate_2",
+			"name": "Prodigy_ArmTemplate_2",
 			"type": "Microsoft.Resources/deployments",
 			"apiVersion": "2018-02-01",
 			"properties": {
@@ -89,7 +89,7 @@
 				}
 			},
 			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'ArmTemplate_1')]"
+				"[resourceId('Microsoft.Resources/deployments', 'Prodigy_ArmTemplate_1')]"
 			]
 		}
 	]
