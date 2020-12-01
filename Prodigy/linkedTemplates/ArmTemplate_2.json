@@ -7323,7 +7323,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/15 Minutes')]",
+			"name": "[concat(parameters('factoryName'), '/1 Hour')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -7342,9 +7342,9 @@
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
-						"frequency": "Minute",
-						"interval": 15,
-						"startTime": "2020-04-30T02:30:00Z",
+						"frequency": "Hour",
+						"interval": 1,
+						"startTime": "2020-11-30T01:00:00Z",
 						"timeZone": "UTC"
 					}
 				}
