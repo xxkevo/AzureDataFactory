@@ -1,5 +1,5 @@
 {
-	"name": "1 Hour",
+	"name": "12 Hour",
 	"properties": {
 		"description": "Load Prodigy DW ",
 		"annotations": [],
@@ -16,8 +16,8 @@
 		"typeProperties": {
 			"recurrence": {
 				"frequency": "Hour",
-				"interval": 1,
-				"startTime": "2020-11-30T01:00:00Z",
+				"interval": 12,
+				"startTime": "2020-11-30T00:00:00Z",
 				"timeZone": "UTC"
 			}
 		}
