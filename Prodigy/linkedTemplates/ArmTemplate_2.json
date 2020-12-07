@@ -7344,7 +7344,7 @@
 					"recurrence": {
 						"frequency": "Hour",
 						"interval": 12,
-						"startTime": "2020-11-30T00:00:00Z",
+						"startTime": "2020-12-07T20:00:00Z",
 						"timeZone": "UTC"
 					}
 				}
